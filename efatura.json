@@ -1,0 +1,2980 @@
+{
+  "name": "efatura",
+  "nodes": [
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c",
+          "mode": "list",
+          "cachedResultName": "muhasebe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1798447486,
+          "mode": "list",
+          "cachedResultName": "giden",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit#gid=1798447486"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Evrak Tarihi": "={{ $json.belge_tarihi }}",
+            "Evrak No": "={{ $json.fatura_no }}",
+            "Şirket ismi": "={{ $json.fatura_kesilen.adi }}",
+            "VKN": "={{ $json.fatura_kesilen.TCKN_VKN }}",
+            "Ürün": "={{ $json.urunler.adi }}",
+            "Adet": "={{ $json.urunler.miktar }}",
+            "Adet Fiyatı": "={{ \n  (() => {\n    let raw = $json.urunler.birim_fiyat;\n    if (!raw) return \"\";\n    \n    // Sadece rakam, nokta, virgül ve eksi işaretini bırak; EUR, TL, ₺, boşluk vb. her şeyi at\n    let temiz = String(raw).replace(/[^0-9.,-]/g, '').trim();\n    \n    return temiz;\n  })()\n}}",
+            "Döviz Cinsi": "={{ $json.urunler.doviz_birimi }}",
+            "İş kolu": "={{ $('When Executed by Another Workflow').item.json.anaIsKolu }}",
+            "Kur Çarpanı": "={{ $json.kur_carpanii }}",
+            "Genel Toplam": "={{ \n  (() => {\n    let raw = $json.urunler.toplam;\n    if (!raw) return \"\";\n    \n    // Sadece rakam, nokta, virgül ve eksi işaretini bırak; EUR, TL, ₺, boşluk vb. her şeyi at\n    let temiz = String(raw).replace(/[^0-9.,-]/g, '').trim();\n    \n    return temiz;\n  })()\n}}",
+            "Toplam KDV (TL)": "={{ \n  (() => {\n    let raw = $json.urunler.kdv_miktari;\n    if (!raw) return \"\";\n    \n    // Birim ekini (EUR, TL, ₺ vb.) temizle\n    let temiz = String(raw).replace(/[^0-9.,-]/g, '').trim();\n    if (!temiz) return \"\";\n    \n    // Türkçe format -> gerçek sayıya çevir (binlik nokta sil, ondalık virgülü noktaya çevir)\n    let kdvSayi = Number(temiz.replace(/\\./g, '').replace(',', '.'));\n    if (isNaN(kdvSayi)) return \"\";\n    \n    // Kur çarpanını al (o da virgüllü Türkçe format olabilir)\n    let kurRaw = $json.kur_carpanii;\n    let kur = kurRaw ? Number(String(kurRaw).replace(',', '.')) : 1;\n    if (isNaN(kur)) kur = 1;\n    \n    // Çarp ve tekrar Türkçe formata (virgüllü) çevir\n    let sonuc = (kdvSayi * kur).toFixed(2).replace('.', ',');\n    return sonuc;\n  })()\n}}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Evrak Tarihi",
+              "displayName": "Evrak Tarihi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Evrak No",
+              "displayName": "Evrak No",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Şirket ismi",
+              "displayName": "Şirket ismi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "VKN",
+              "displayName": "VKN",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Ürün",
+              "displayName": "Ürün",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Adet",
+              "displayName": "Adet",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Adet Fiyatı",
+              "displayName": "Adet Fiyatı",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Döviz Cinsi",
+              "displayName": "Döviz Cinsi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "İş kolu",
+              "displayName": "İş kolu",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Kur Çarpanı",
+              "displayName": "Kur Çarpanı",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Genel Toplam",
+              "displayName": "Genel Toplam",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam (TL)",
+              "displayName": "Toplam (TL)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "KDV Oranı 0,2",
+              "displayName": "KDV Oranı 0,2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "KDV Oranı 0,1",
+              "displayName": "KDV Oranı 0,1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "KDV Oranı 0,01",
+              "displayName": "KDV Oranı 0,01",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam KDV (TL)",
+              "displayName": "Toplam KDV (TL)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Hususi Otomobil Gideri?",
+              "displayName": "Hususi Otomobil Gideri?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Stok Giriş",
+              "displayName": "Stok Giriş",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam Beyan Edilecek KDV (TL)",
+              "displayName": "Toplam Beyan Edilecek KDV (TL)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam Beyan Edilecek KV Matrah",
+              "displayName": "Toplam Beyan Edilecek KV Matrah",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1872,
+        672
+      ],
+      "id": "94c98600-6a09-43e1-a204-59f830ff1efb",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "urunler",
+        "include": "allOtherFields",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        -176,
+        368
+      ],
+      "id": "04b504b3-244c-46b3-afba-b67ff356e412",
+      "name": "Split Out",
+      "alwaysOutputData": false,
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "caed212a-546a-4b0f-ae7d-82bdfc107e8b",
+              "leftValue": "={{ $json.faturayi_kesen.adi }}",
+              "rightValue": "EBT GRUP DIŞ TİCARET SANAYİ LİMİTED ŞİRKETİ",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1648,
+        768
+      ],
+      "id": "3e08fe53-1f24-4907-84cc-f762ac774c9a",
+      "name": "If",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c",
+          "mode": "list",
+          "cachedResultName": "muhasebe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "gelen",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Evrak Tarihi": "={{ $json.belge_tarihi }}",
+            "Evrak No": "={{ $json.fatura_no }}",
+            "Şirket ismi": "={{ $json.faturayi_kesen.adi }}",
+            "VKN": "={{ $json.faturayi_kesen.TCKN_VKN }}",
+            "Ürün": "={{ $json.urunler.adi }}",
+            "Adet": "={{ $json.urunler.miktar }}",
+            "Adet Fiyatı": "={{ \n  (() => {\n    let raw = $json.urunler.birim_fiyat;\n    if (!raw) return \"\";\n    \n    // Sadece rakam, nokta, virgül ve eksi işaretini bırak; EUR, TL, ₺, boşluk vb. her şeyi at\n    let temiz = String(raw).replace(/[^0-9.,-]/g, '').trim();\n    \n    return temiz;\n  })()\n}}",
+            "Döviz Cinsi": "={{ $json.urunler.doviz_birimi }}",
+            "İş kolu": "={{ $('When Executed by Another Workflow').item.json.anaIsKolu }}",
+            "Kur Çarpanı": "={{ $json.kur_carpanii }}",
+            "Genel Toplam": "={{ \n  (() => {\n    let raw = $json.urunler.toplam;\n    if (!raw) return \"\";\n    \n    // Sadece rakam, nokta, virgül ve eksi işaretini bırak; EUR, TL, ₺, boşluk vb. her şeyi at\n    let temiz = String(raw).replace(/[^0-9.,-]/g, '').trim();\n    \n    return temiz;\n  })()\n}}",
+            "Toplam KDV (TL)": "={{ \n  (() => {\n    let raw = $json.urunler.kdv_miktari;\n    if (!raw) return \"\";\n    \n    // Birim ekini (EUR, TL, ₺ vb.) temizle\n    let temiz = String(raw).replace(/[^0-9.,-]/g, '').trim();\n    if (!temiz) return \"\";\n    \n    // Türkçe format -> gerçek sayıya çevir (binlik nokta sil, ondalık virgülü noktaya çevir)\n    let kdvSayi = Number(temiz.replace(/\\./g, '').replace(',', '.'));\n    if (isNaN(kdvSayi)) return \"\";\n    \n    // Kur çarpanını al (o da virgüllü Türkçe format olabilir)\n    let kurRaw = $json.kur_carpanii;\n    let kur = kurRaw ? Number(String(kurRaw).replace(',', '.')) : 1;\n    if (isNaN(kur)) kur = 1;\n    \n    // Çarp ve tekrar Türkçe formata (virgüllü) çevir\n    let sonuc = (kdvSayi * kur).toFixed(2).replace('.', ',');\n    return sonuc;\n  })()\n}}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Evrak Tarihi",
+              "displayName": "Evrak Tarihi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Evrak No",
+              "displayName": "Evrak No",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Şirket ismi",
+              "displayName": "Şirket ismi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "VKN",
+              "displayName": "VKN",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Ürün",
+              "displayName": "Ürün",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Adet",
+              "displayName": "Adet",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Adet Fiyatı",
+              "displayName": "Adet Fiyatı",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Döviz Cinsi",
+              "displayName": "Döviz Cinsi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "İş kolu",
+              "displayName": "İş kolu",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Kur Çarpanı",
+              "displayName": "Kur Çarpanı",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Genel Toplam",
+              "displayName": "Genel Toplam",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam (TL)",
+              "displayName": "Toplam (TL)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "KDV Oranı 0,2",
+              "displayName": "KDV Oranı 0,2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "KDV Oranı 0,1",
+              "displayName": "KDV Oranı 0,1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "KDV Oranı 0,01",
+              "displayName": "KDV Oranı 0,01",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam KDV (TL)",
+              "displayName": "Toplam KDV (TL)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Hususi Otomobil Gideri?",
+              "displayName": "Hususi Otomobil Gideri?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Stok Giriş",
+              "displayName": "Stok Giriş",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam Beyan Edilecek KDV (TL)",
+              "displayName": "Toplam Beyan Edilecek KDV (TL)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam Beyan Edilecek KV Matrah",
+              "displayName": "Toplam Beyan Edilecek KV Matrah",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1872,
+        864
+      ],
+      "id": "5cbd1880-90d5-4818-a054-fb1029e87aa1",
+      "name": "Append row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -1856,
+        1088
+      ],
+      "id": "638d1808-2122-4c9c-a339-78a1138a224a",
+      "name": "Extract from File1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "17df1b48-28fc-46ba-9569-7292a241f6d5",
+              "leftValue": "={{ $json.message.content.stok }}",
+              "rightValue": "true",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            },
+            {
+              "id": "f655b276-0ce0-4bcc-84f6-c4ed6fb913be",
+              "leftValue": "={{ $('Merge').item.json.fatura_no }}",
+              "rightValue": "EBT",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1360,
+        288
+      ],
+      "id": "93dd7290-2a38-4524-ba3a-d1afe142f5cb",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c",
+          "mode": "list",
+          "cachedResultName": "muhasebe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1077085734,
+          "mode": "list",
+          "cachedResultName": "yon",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit#gid=1077085734"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Stok Adı": "={{ $json.message.content.eslesen_stok_adi }}",
+            "Tarih": "={{ $('Merge').item.json.belge_tarihi }}",
+            "Giriş Miktarı": "={{ $('Merge').item.json.urunler.miktar }}",
+            "Birim Fiyat": "={{ (parseFloat(String($('Merge').item.json.urunler.birim_fiyat).replace(',', '.').replace(/[^0-9.]/g, '')) * parseFloat(String($('Code in JavaScript5').item.json.kur_carpanii).replace(',', '.').replace(/[^0-9.]/g, ''))).toString().replace('.', ',') }}",
+            "Yön": "cikis"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Stok Adı",
+              "displayName": "Stok Adı",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tarih",
+              "displayName": "Tarih",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Giriş Miktarı",
+              "displayName": "Giriş Miktarı",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Birim Fiyat",
+              "displayName": "Birim Fiyat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Yön",
+              "displayName": "Yön",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "FİFO",
+              "displayName": "FİFO",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1872,
+        192
+      ],
+      "id": "05222663-8570-4d85-8e9c-1765a8f79ae0",
+      "name": "Append row in sheet2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8c57dcb4-b880-4da6-a6b5-0bf654fc647f",
+              "leftValue": "={{ $('Merge').item.json.faturayi_kesen.adi }}",
+              "rightValue": "EBT GRUP DIŞ TİCARET SANAYİ LİMİTED ŞİRKETİ",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1648,
+        288
+      ],
+      "id": "f5449128-b4ee-401e-b3f4-220d4b5424ef",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c",
+          "mode": "list",
+          "cachedResultName": "muhasebe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1077085734,
+          "mode": "list",
+          "cachedResultName": "yon",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit#gid=1077085734"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Stok Adı": "={{ $json.message.content.eslesen_stok_adi }}",
+            "Tarih": "={{ $('Merge').item.json.belge_tarihi }}",
+            "Giriş Miktarı": "={{ $('Merge').item.json.urunler.miktar }}",
+            "Birim Fiyat": "={{ \n  (() => {\n    let raw = $('Merge').item.json.urunler.birim_fiyat;\n    if (!raw) return \"\";\n    \n    // Sadece rakam, nokta, virgül ve eksi işaretini bırak; EUR, TL, ₺, boşluk vb. her şeyi at\n    let temiz = String(raw).replace(/[^0-9.,-]/g, '').trim();\n    if (!temiz) return \"\";\n\n    // Türkçe format -> gerçek sayıya çevir (binlik noktayı sil, ondalık virgülü noktaya çevir)\n    let birimFiyat = Number(temiz.replace(/\\./g, '').replace(',', '.'));\n    if (isNaN(birimFiyat)) return \"\";\n\n    // Kur çarpanını al (JavaScript5 node'undan)\n    let kurRaw = $('Code in JavaScript5').item.json.kur_carpanii;\n    let kur = kurRaw ? Number(String(kurRaw).replace(/\\./g, '').replace(',', '.')) : 1;\n    if (isNaN(kur)) kur = 1;\n\n    // Çarpımı yap, 2 basamağa yuvarla ve noktayı virgüle çevir\n    let sonuc = (birimFiyat * kur).toFixed(2).replace('.', ',');\n    return sonuc;\n  })()\n}}",
+            "Yön": "giris"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Stok Adı",
+              "displayName": "Stok Adı",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tarih",
+              "displayName": "Tarih",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Giriş Miktarı",
+              "displayName": "Giriş Miktarı",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Birim Fiyat",
+              "displayName": "Birim Fiyat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Yön",
+              "displayName": "Yön",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "FİFO",
+              "displayName": "FİFO",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1872,
+        384
+      ],
+      "id": "637ea6af-46c6-4ca2-9abc-da847cfeb7c5",
+      "name": "Append row in sheet3",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "d75db09f-430e-4bb2-9c91-647d3831b8c5",
+              "leftValue": "={{ $json.message.document.mime_type }}",
+              "rightValue": "=application/pdf",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -2304,
+        1184
+      ],
+      "id": "e539ccd4-cd64-4862-bc3f-9841c28600b2",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "chatgpt-4o-latest",
+          "mode": "list",
+          "cachedResultName": "CHATGPT-4O-LATEST"
+        },
+        "text": "=görselden belirtilen bilgileri çıkar ve yalnızca JSON formatında cevap ver. \nHer zaman aynı değişken isimlerini kullan. Eksik bilgi varsa boş string (\"\") olarak yaz. \nJSON dışında hiçbir açıklama veya metin yazma.\n\nSadece geçerli JSON ile cevap ver. \nKesin kurallar:\n- Cevapta ``` veya başka açıklama olmayacak, yalnızca JSON olacak. \n- Sayılarda nokta (.) değil virgül (,) kullanılacak. Örn: 340.00\n- Her alan çift tırnak (\"\") içinde olacak. \n- Eksik bilgi varsa boş string (\"\") yazılacak. \n- \"urunler\" mutlaka bir dizi olmalı.\n- JSON mutlaka doğru kapanmış olmalı.\n\nÖNEMLİ KURAL: \n- istediğim JSON formatında cevap ver\n- Ürünler listesi mutlaka \"urunler\" dizisinde olmalıdır. \n- ürün isminde kod ya da sayı varsa onları da almayı unutma\n- Dizinin eleman sayısı görseldeki ürün adedi kadar olmalıdır.\n- Her ürün için mutlaka şu alanlar bulunmalıdır: \"adi\", \"miktar\", \"birim_fiyat\", \"kdv_miktari\", \"odenecek_tutar\",\"döviz_birimi\"\n\n\nİstediğim JSON şablonu:\n\n{\n  \"belge_tarihi\": \"\",\n  \"fatura_no\": \"\",\n  \"faturayi_kesen\": {\n    \"adi\": \"\",\n    \"TCKN_VKN\": \"\"\n  },\n  \"fatura_kesilen\": {\n   \"adi\": \"\",\n    \"TCKN_VKN\": \"\"\n  },\n  \"urunler\": [\n    {\n      \"adi\": \"\",\n      \"miktar\": \"\",\n      \"birim_fiyat\": \"\",\n      \"kdv_miktari\": \"\",\n      \"odenecek_tutar\": \"\",\n      \"kur_carpani\": \"\",\n      \"doviz_birimi\":\"\"\n    }\n  ]\n}\n",
+        "imageUrls": "=https://api.telegram.org/file/bot7603268344:AAGe0IFZxaFiZGb_qYVoOQ05JZaBYOXd3ec/{{ $json.result.file_path }}\n",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -2080,
+        1280
+      ],
+      "id": "257bbb37-ceaa-48ec-9205-3f22a38949f3",
+      "name": "Analyze image",
+      "credentials": {
+        "openAiApi": {
+          "id": "NGSD4SI9xQZgeg1F",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Function node (n8n) - ChatGPT çıktısını temizler, onarır, parse eder ve gerçek JSON döner.\n// Kullanım: ChatGPT node'dan sonra bağla. ChatGPT çıktısı items[0].json.content veya items[0].json.choices[0].message.content gibi olabilir.\n\nconst rawFrom = items[0].json.content\n  || (items[0].json.choices && items[0].json.choices[0] && items[0].json.choices[0].message && items[0].json.choices[0].message.content)\n  || JSON.stringify(items[0].json);\n\n// ensure string\nlet s = String(rawFrom);\n\n// 1) Remove common code fences and leading \"```json\" etc.\ns = s.replace(/```json\\s*/gi, \"\").replace(/```/g, \"\").trim();\n\n// 2) If assistant prepended text before JSON, extract substring from first { to last }\n//    fallback: from first [ to last ] if no object found.\nconst firstObj = s.indexOf('{');\nconst lastObj  = s.lastIndexOf('}');\nconst firstArr = s.indexOf('[');\nconst lastArr  = s.lastIndexOf(']');\n\nlet candidate = s;\nif (firstObj !== -1 && lastObj !== -1 && lastObj > firstObj) {\n  candidate = s.substring(firstObj, lastObj + 1);\n} else if (firstArr !== -1 && lastArr !== -1 && lastArr > firstArr) {\n  candidate = s.substring(firstArr, lastArr + 1);\n}\n\n// 3) Convert decimal dots to commas (e.g. 340.50 -> 340,50)\ncandidate = candidate.replace(/(\\d+)\\.(\\d{2})(?=[\\s\"\\}\\]\\,])/g, \"$1,$2\");\n\n// 4) Remove percent signs inside quoted values (e.g. \"%10\" -> \"10\")\ncandidate = candidate.replace(/\"(\\s*)%?(\\d+(?:[.,]\\d+)?)%?(\\s*)\"/g, \"\\\"$2\\\"\");\n\n// 5) Remove trailing commas before } or ] (e.g. {\"a\":1,} -> {\"a\":1})\ncandidate = candidate.replace(/,(\\s*[}\\]])/g, \"$1\");\n\n// 6) Try to auto-balance braces if JSON truncated\nfunction balanceCount(str, openChar, closeChar){\n  let n = 0;\n  for (let ch of str) {\n    if (ch === openChar) n++;\n    else if (ch === closeChar) n--;\n  }\n  return n;\n}\nlet braceDiff = balanceCount(candidate, '{', '}');\nwhile (braceDiff > 0) { candidate += '}'; braceDiff--; }\nwhile (braceDiff < 0) {\n  candidate = candidate.replace(/}\\s*$/, '');\n  braceDiff = balanceCount(candidate, '{', '}');\n}\n\n// 7) Final lightweight cleanup\ncandidate = candidate.trim();\n\n// 8) Attempt parse\nlet parsed = null;\ntry {\n  parsed = JSON.parse(candidate);\n} catch (err) {\n  const match = candidate.match(/\\{[\\s\\S]*\\}/);\n  if (match) {\n    try {\n      parsed = JSON.parse(match[0]);\n    } catch (err2) {\n      throw new Error(\"JSON parse failed after cleaning. Error: \" + err2.message + \"\\nCleaned snippet (first 1200 chars):\\n\" + candidate.slice(0,1200));\n    }\n  } else {\n    throw new Error(\"No JSON object found in ChatGPT output. Cleaned snippet (first 1200 chars):\\n\" + candidate.slice(0,1200));\n  }\n}\n\n// 9) Ensure required top-level keys exist\nif (typeof parsed !== 'object' || parsed === null) {\n  throw new Error(\"Parsed value is not an object.\");\n}\nparsed.belge_tarihi = parsed.belge_tarihi ?? \"\";\nparsed.fatura_no = parsed.fatura_no ?? \"\";\nparsed.faturayi_kesen = parsed.faturayi_kesen ?? { adi: \"\", TCKN_VKN: \"\" };\nparsed.fatura_kesilen = parsed.fatura_kesilen ?? { adi: \"\", TCKN_VKN: \"\" };\nparsed.urunler = Array.isArray(parsed.urunler) ? parsed.urunler : [];\n\n// Ensure each product has required fields\nparsed.urunler = parsed.urunler.map(u => {\n  const convertDots = (v) => typeof v === \"string\" ? v.replace(/(\\d+)\\.(\\d{2})/g, \"$1,$2\") : v;\n  return {\n    adi: (u.adi ?? \"\").toString(),\n    miktar: convertDots(u.miktar ?? \"\").toString(),\n    birim_fiyat: convertDots(u.birim_fiyat ?? \"\").toString(),\n    kdv_miktari: convertDots(u.kdv_miktari ?? \"\").toString(),\n    odenecek_tutar: convertDots(u.odenecek_tutar ?? \"\").toString(),\n    kur_carpani: convertDots(u.kur_carpani ?? \"\").toString(),\n    doviz_birimi: (u.doviz_birimi ?? \"TL\").toString()\n  };\n});\n\n// 10) Return standardized JSON\nreturn [{ json: parsed }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1856,
+        1280
+      ],
+      "id": "7e6130ef-9266-4318-b354-e055e1f516c8",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1jdSXxGxzWV63H9rVlmQwcEpmu0NizQlPEdzGS-_yHI0",
+          "mode": "list",
+          "cachedResultName": "muhasebe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jdSXxGxzWV63H9rVlmQwcEpmu0NizQlPEdzGS-_yHI0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "gelen",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1jdSXxGxzWV63H9rVlmQwcEpmu0NizQlPEdzGS-_yHI0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Evrak Tarihi": "={{ $json.belge_tarihi }}",
+            "Evrak No": "={{ $json.fatura_no }}",
+            "Şirket ismi": "={{ $json.faturayi_kesen.adi }}",
+            "VKN": "={{ $json.faturayi_kesen.TCKN_VKN }}",
+            "Ürün": "={{ $json.urunler[0].adi }}",
+            "Adet": "={{ $json.urunler[0].miktar }}",
+            "Adet Fiyatı": "={{ $json.urunler[0].birim_fiyat }}",
+            "Döviz Cinsi": "={{ $json.urunler[0].doviz_birimi }}",
+            "Kur Çarpanı": "1",
+            "Genel Toplam": "={{ $json.urunler[0].odenecek_tutar }}",
+            "Toplam KDV (TL)": "={{ $json.urunler[0].kdv_miktari }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Evrak Tarihi",
+              "displayName": "Evrak Tarihi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Evrak No",
+              "displayName": "Evrak No",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Şirket ismi",
+              "displayName": "Şirket ismi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "VKN",
+              "displayName": "VKN",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Ürün",
+              "displayName": "Ürün",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Adet",
+              "displayName": "Adet",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Adet Fiyatı",
+              "displayName": "Adet Fiyatı",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Döviz Cinsi",
+              "displayName": "Döviz Cinsi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "İş kolu",
+              "displayName": "İş kolu",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Kur Çarpanı",
+              "displayName": "Kur Çarpanı",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Genel Toplam",
+              "displayName": "Genel Toplam",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam (TL)",
+              "displayName": "Toplam (TL)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "KDV Oranı 0,2",
+              "displayName": "KDV Oranı 0,2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "KDV Oranı 0,1",
+              "displayName": "KDV Oranı 0,1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "KDV Oranı 0,01",
+              "displayName": "KDV Oranı 0,01",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam KDV (TL)",
+              "displayName": "Toplam KDV (TL)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Hususi Otomobil Gideri?",
+              "displayName": "Hususi Otomobil Gideri?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Stok Giriş",
+              "displayName": "Stok Giriş",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam Beyan Edilecek KDV (TL)",
+              "displayName": "Toplam Beyan Edilecek KDV (TL)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam Beyan Edilecek KV Matrah",
+              "displayName": "Toplam Beyan Edilecek KV Matrah",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -1568,
+        1280
+      ],
+      "id": "7b59ef1a-cea8-4bd3-a185-fbb696f3507c",
+      "name": "Append row in sheet4",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "inputSource": "passthrough"
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        -2528,
+        1184
+      ],
+      "id": "810b0879-69c7-4c70-bb03-fa2bea420d80",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('When Executed by Another Workflow').item.json.message.chat.id }}",
+        "text": "=Kayıt yapıldı \nÜrün:{{ $json['Stok Adı'] }} \nAdet:{{ $json['Giriş Miktarı'] }}\nBirim Fiyat:{{ $json['Birim Fiyat'] }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2096,
+        288
+      ],
+      "id": "09cea865-153d-4bd2-8713-f16a3216be56",
+      "name": "Send a text message",
+      "webhookId": "c04effce-3fec-4262-9026-ff60569c8158",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('When Executed by Another Workflow').item.json.message.chat.id }}",
+        "text": "=Excele Kayıt edildi",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2096,
+        768
+      ],
+      "id": "b2e3fc77-c319-4600-9d57-7ab853734780",
+      "name": "Send a text message1",
+      "webhookId": "c04effce-3fec-4262-9026-ff60569c8158",
+      "executeOnce": true,
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1CvS5_Ii5_7czJdpk4bdCW1TRuEqcohQe5syUWd86SKc",
+          "mode": "list",
+          "cachedResultName": "stok",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1CvS5_Ii5_7czJdpk4bdCW1TRuEqcohQe5syUWd86SKc/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sayfa1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1CvS5_Ii5_7czJdpk4bdCW1TRuEqcohQe5syUWd86SKc/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        48,
+        32
+      ],
+      "id": "2acea4b3-dcf7-4ff1-a16b-e285d0f20642",
+      "name": "Get row(s) in sheet",
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// Tablonuzdaki başlık \"H4J 180 derece\" olduğu için kodu buna göre uyarladık\nconst stokListesi = items\n  .map(item => item.json[\"stok\"]) // Stok isimlerini çeker\n  .filter(ad => ad) // Boş satır varsa atlar\n  .join(\"\\n\"); // Hepsini alt alta tek bir metin yapar\n\n// Tüm listeyi tek bir paket (item) olarak AI'a gönderir\nreturn [{ json: { guncel_stok_listesi: stokListesi } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        272,
+        32
+      ],
+      "id": "ecddfedc-9dca-4064-a763-60d3eebb1222",
+      "name": "Code in JavaScript2",
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        496,
+        176
+      ],
+      "id": "72019d01-1a98-4495-849a-74274b10aaef",
+      "name": "Merge",
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "e532879c-f22e-4bd5-b195-cc7ffc7382ec",
+              "leftValue": "={{ $('Code in JavaScript5').item.json.senaryo }}",
+              "rightValue": "IHRACAT",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "199f917c-07bd-404f-8007-477f623c75f5",
+              "leftValue": "={{ $('Code in JavaScript5').item.json.fatura_no }}",
+              "rightValue": "EBT",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1360,
+        0
+      ],
+      "id": "5252698f-d9be-4859-971d-237b2bdf8820",
+      "name": "If4"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1648,
+        96
+      ],
+      "id": "10ff37ea-c3af-4c50-8769-b55e5f193890",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "dataTableId": {
+          "__rl": true,
+          "value": "RggPeg2bozWgmotU",
+          "mode": "list",
+          "cachedResultName": "İhracat Kalemler",
+          "cachedResultUrl": "/projects/MQLZkuZR79pgXy4e/datatables/RggPeg2bozWgmotU"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Urun": "={{ $json.message.content.eslesen_stok_adi }}",
+            "Miktar": "={{ $json.message.content.miktar }}",
+            "Birimfiyat": "={{ $json.message.content['birim fiyat'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Urun",
+              "displayName": "Urun",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Miktar",
+              "displayName": "Miktar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Birimfiyat",
+              "displayName": "Birimfiyat",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "optimizeBulk": false
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        1648,
+        -96
+      ],
+      "id": "82303e0e-37fd-45a3-a66c-6f71db85ef76",
+      "name": "Insert row"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('When Executed by Another Workflow').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -2080,
+        1088
+      ],
+      "id": "d12cf932-d756-4efd-9911-5d7a3cab076f",
+      "name": "Get a file2",
+      "webhookId": "91223856-37b9-4165-a15a-3e512698b807",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "43cc5fc1-37dc-49b9-8612-408dff7ea3ea",
+              "name": "message.content.urunler",
+              "value": "={{ $('Message a model').item.json.message.content.urunler }}",
+              "type": "array"
+            },
+            {
+              "id": "b3837097-a3c9-4704-b078-4501be4290f3",
+              "name": "message.content.fatura_kesilen",
+              "value": "={{ $('Message a model').item.json.message.content.fatura_kesilen }}",
+              "type": "object"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -2528,
+        -320
+      ],
+      "id": "1bbbff6a-4bab-41e3-ba1b-f851384fc05c",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "mode": "chooseBranch",
+        "numberInputs": 3
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        2320,
+        512
+      ],
+      "id": "297c0ab0-27bd-4a7d-a63d-8fac7ee262f9",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "02f563f4-9449-4cd3-8bf4-0eef6bec19fe",
+              "leftValue": "={{ $json.fatura_no }}",
+              "rightValue": "EBT",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -176,
+        1632
+      ],
+      "id": "f95ab713-ffa3-442b-9278-8c3640fa2261",
+      "name": "If5"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        48,
+        1632
+      ],
+      "id": "c85b7d98-a904-4682-a5b8-3b2e35424aa3",
+      "name": "No Operation, do nothing1"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "=={\n\"Chat ID\": \"{{ $('When Executed by Another Workflow').item.json.message.from.id }}\",\n\"Ödenecek Tutar Dvz\": \"{{ $json['ödenecek tutar döviz'] }}\",\n\"Ödenecek Tutar TL\": \"{{ $json['ödenecek tutar TL'] }}\",\n\"Tarih\": \"{{ $json.belge_tarihi }}\",\n\"Fatura No\": \"{{ $json.fatura_no }}\",\n\"Evrak Cinsi\": \"{{ $('When Executed by Another Workflow').item.json.evrakCinsi }}\",\n\"TCKN\": \"{{ $json.faturayi_kesen.adi === 'EBT GRUP DIŞ TİCARET SANAYİ LİMİTED ŞİRKETİ' ? $json.fatura_kesilen.TCKN_VKN : $json.faturayi_kesen.TCKN_VKN }}\",\n\"Firma\": \"{{ $json.faturayi_kesen.adi === 'EBT GRUP DIŞ TİCARET SANAYİ LİMİTED ŞİRKETİ' ? $json.fatura_kesilen.adi : $json.faturayi_kesen.adi }}\"\n\n\"Giden Mi\": \"{{ $json.faturayi_kesen.adi === 'EBT GRUP DIŞ TİCARET SANAYİ LİMİTED ŞİRKETİ' ? 'true' : 'false' }}\"}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        48,
+        1440
+      ],
+      "id": "c284ff71-851f-4517-9cb3-b11ea41531e7",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "=cari_{{ $json.TCKN }}",
+        "filter": {},
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        496,
+        1248
+      ],
+      "id": "e7ce7977-cf50-4aab-99d9-059c8d19b2e1",
+      "name": "Search files and folders",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "copy",
+        "fileId": {
+          "__rl": true,
+          "value": "1NVTzp4XxVb8COoRMAqkBxbRxEa2FC0kUerDzrmXjOhs",
+          "mode": "list",
+          "cachedResultName": "Cari_sablon",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NVTzp4XxVb8COoRMAqkBxbRxEa2FC0kUerDzrmXjOhs/edit?usp=drivesdk"
+        },
+        "name": "=cari_{{ $('Edit Fields1').item.json.TCKN }}",
+        "sameFolder": false,
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1glRmZqJ3RVCdDtBzjxmXN1EEQR6qOJ3o",
+          "mode": "list",
+          "cachedResultName": "Cariler",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1glRmZqJ3RVCdDtBzjxmXN1EEQR6qOJ3o"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1072,
+        1152
+      ],
+      "id": "2e2d5662-fb16-442b-a0ad-cf0088ea31cc",
+      "name": "Copy file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "2195f25b-e98d-4649-acfc-6c71b3ab31b4",
+              "leftValue": "={{ $json.id }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "empty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        784,
+        1248
+      ],
+      "id": "20cd8fd9-bd33-43cc-89db-ba82f97f09b5",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Edit Fields1').item.json['Chat ID'] }}",
+        "text": "Cariye Kayıt Edildi",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        1648,
+        1248
+      ],
+      "id": "5f869811-10c5-4cd2-a2e8-8a3c28ad057b",
+      "name": "Send a text message2",
+      "webhookId": "180686da-3e2a-47cc-9a3b-c38df27940a9",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sayfa1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1r25TamAvZZh9D2MQYubhW9lLHa0TH4x0502vtV_8omc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Tarih": "={{ $('Edit Fields1').item.json.Tarih }}",
+            "Açıklama": "={{ $('Edit Fields1').item.json['Fatura No'] }}",
+            "Döviz Tutar": "={{ $('Edit Fields1').item.json['Ödenecek Tutar Dvz'] }}",
+            "Tutar": "={{ \n  (() => {\n    let raw = $('Edit Fields1').item.json['Ödenecek Tutar TL'];\n    if (!raw) return 0;\n    \n    let temiz = String(raw).replace(/[^0-9.,-]/g, '').trim();\n    if (!temiz) return 0;\n    \n    let clean = temiz.replace(/\\./g, '').replace(',', '.');\n    let num = Number(clean);\n    if (isNaN(num)) return 0;\n    \n    let isDekont = $('Edit Fields1').item.json[\"Evrak Cinsi\"] === \"14\";\n    let isGiden = $('Edit Fields1').item.json[\"Giden Mi\"] === \"true\";\n    \n    return (isDekont || isGiden) ? -Math.abs(num) : Math.abs(num);\n  })()\n}}"
+          },
+          "matchingColumns": [
+            "A/B"
+          ],
+          "schema": [
+            {
+              "id": "Tarih",
+              "displayName": "Tarih",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Açıklama",
+              "displayName": "Açıklama",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Döviz Tutar",
+              "displayName": "Döviz Tutar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tutar",
+              "displayName": "Tutar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "A/B",
+              "displayName": "A/B",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1360,
+        1344
+      ],
+      "id": "074aaa7f-5969-4515-87a5-83361346fd69",
+      "name": "Append row in sheet5",
+      "executeOnce": false,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sayfa1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1r25TamAvZZh9D2MQYubhW9lLHa0TH4x0502vtV_8omc/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Tarih": "={{ $('Edit Fields1').item.json.Tarih }}",
+            "Açıklama": "={{ $('Edit Fields1').item.json['Fatura No'] }}",
+            "Döviz Tutar": "={{ $('Edit Fields1').item.json['Ödenecek Tutar Dvz'] }}",
+            "Tutar": "={{ \n  (() => {\n    let raw = $('Edit Fields1').item.json['Ödenecek Tutar TL'];\n    if (!raw) return 0;\n    \n    let temiz = String(raw).replace(/[^0-9.,-]/g, '').trim();\n    if (!temiz) return 0;\n    \n    let clean = temiz.replace(/\\./g, '').replace(',', '.');\n    let num = Number(clean);\n    if (isNaN(num)) return 0;\n    \n    let isDekont = $('Edit Fields1').item.json[\"Evrak Cinsi\"] === \"14\";\n    let isGiden = $('Edit Fields1').item.json[\"Giden Mi\"] === \"true\";\n    \n    return (isDekont || isGiden) ? -Math.abs(num) : Math.abs(num);\n  })()\n}}"
+          },
+          "matchingColumns": [
+            "Tarih"
+          ],
+          "schema": [
+            {
+              "id": "Tarih",
+              "displayName": "Tarih",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Açıklama",
+              "displayName": "Açıklama",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Döviz Tutar",
+              "displayName": "Döviz Tutar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Tutar",
+              "displayName": "Tutar",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "A/B",
+              "displayName": "A/B",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1360,
+        1152
+      ],
+      "id": "f5602b56-d2f6-4ea3-90fd-527c67b41020",
+      "name": "Append row in sheet6",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "claude-sonnet-4-5-20250929",
+          "mode": "list",
+          "cachedResultName": "claude-sonnet-4-5-20250929"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Aşağıdaki metinden belirtilen bilgileri çıkar ve yalnızca JSON formatında cevap ver. \nHer zaman aynı değişken isimlerini kullan. Eksik bilgi varsa boş string (\"\") olarak yaz. \nJSON dışında hiçbir açıklama veya metin yazma.\nSadece ham JSON döndür. Kesinlikle ``` veya ```json yazma. Açıklama ekleme.\nÖNEMLİ KURAL: \n- \"Sayın ...\" veya \"Alıcı ...\" diye başlayan kısım her zaman \"fatura_kesilen\" bilgisidir. \n- Bu kısmın dışında kalan firma/kişi bilgileri \"faturayi_kesen\" bilgisidir.\n-\"kur_carpani\" için \"TCMB Gösterge Niteliğindeki Merkez Bankası Kurları\" sayfasından fatura tarihinden bir önceki iş gününün ilgili döviz \"alış(forex buying)\" fiyatını yaz.(tl ise kur çarpanı 1 dir.)(ondalık kısmını . ile değil , ile yaz)\n- Ürünler listesi mutlaka \"urunler\" dizisinde olmalıdır. \n- ödenecek tutar sadece TL olarak bulunuyorsa ödenecek tutar döviz boş kalmalıdır.\n- ürün isminde kod ya da sayı varsa onları da almayı unutma\n- Dizinin eleman sayısı metindeki ürün adedi kadar olmalıdır. \n-\"toplam\" ürünlerin fiyatına kdv eklenmiş fiyat olmalı\n- Her ürün için mutlaka şu alanlar bulunmalıdır: \"adi\", \"miktar\", \"birim_fiyat\", \"kdv_miktari\", \"toplam\",\"döviz_birimi\"\n- \"belge_tarihi\" alanı KESİNLİKLE \"DD-MM-YYYY\" formatında olmalı (tire ile ayrılmış). \nNokta (.) veya slash (/) kullanma.\n\nMetin: {{ $json.text }}\n\nİstediğim JSON şablonu:\n\n{\n  \"belge_tarihi\": \"\",\n  \"senaryo\": \"\",\n  \"fatura_no\": \"\",\n  \"ödenecek tutar döviz\"\n  \"ödenecek tutar TL\"\n  \"faturayi_kesen\": {\n    \"adi\": \"\",\n    \"TCKN_VKN\": \"\"\n  },\n  \"fatura_kesilen\": {\n   \"adi\": \"\",\n    \"TCKN_VKN\": \"\"\n  },\n  \"urunler\": [\n    {\n      \"adi\": \"\",\n      \"miktar\": \"\",\n      \"birim_fiyat\": \"\",\n      \"kdv_miktari\": \"\",\n      \"toplam\": \"\",\n      \"kur_carpani\": \"\",\n      \"doviz_birimi\":\"\"\n    }\n  ]\n}\n"
+            }
+          ]
+        },
+        "options": {
+          "maxTokens": 2048
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.anthropic",
+      "typeVersion": 1,
+      "position": [
+        -1632,
+        1088
+      ],
+      "id": "f8711352-3116-45a6-959b-2801d20fdf8f",
+      "name": "Message a model3",
+      "credentials": {
+        "anthropicApi": {
+          "id": "GSgB2w16WLmZIdOC",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = items[0].json.content[0].text;\nconst clean = raw\n  .replace(/```json\\n?/g, '')\n  .replace(/```/g, '')\n  .trim();\n\nreturn [{ json: JSON.parse(clean) }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1280,
+        1088
+      ],
+      "id": "ff1d9a51-ec3e-46d0-aabd-bc8eb4b8bbee",
+      "name": "Code in JavaScript3"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = items[0].json;\n\nlet dovizBirimi;\nlet faturaStr = data.belge_tarihi;\n\nif (Array.isArray(data.urunler) && data.urunler.length > 0 && data.urunler[0].doviz_birimi) {\n  dovizBirimi = data.urunler[0].doviz_birimi;\n} else if (data.doviz_birimi) {\n  dovizBirimi = data.doviz_birimi;\n} else {\n  dovizBirimi = \"TL\";\n}\n\nif (!dovizBirimi || dovizBirimi === \"TL\" || dovizBirimi === \"TRY\") {\n  return [{\n    json: {\n      ...data,\n      doviz_birimi: dovizBirimi,\n      kur_carpanii: \"1,00\",\n      skip_tcmb: true\n    }\n  }];\n}\n\n// Tarihi hem nokta (.) hem tire (-) ayracını destekleyecek şekilde parse et\nconst ayirac = faturaStr.includes('.') ? '.' : '-';\nconst parcalar = faturaStr.split(ayirac).map(Number);\n\nif (parcalar.length !== 3 || parcalar.some(isNaN)) {\n  throw new Error(\"Tarih parse edilemedi. Gelen değer: '\" + faturaStr + \"'. Beklenen format: DD-MM-YYYY veya DD.MM.YYYY\");\n}\n\nconst [gun, ay, yil] = parcalar;\nlet tarih = new Date(yil, ay - 1, gun);\n\nif (isNaN(tarih.getTime())) {\n  throw new Error(\"Geçersiz tarih oluştu. Girdi: \" + faturaStr);\n}\n\ntarih.setDate(tarih.getDate() - 1);\nwhile (tarih.getDay() === 0 || tarih.getDay() === 6) {\n  tarih.setDate(tarih.getDate() - 1);\n}\n\nconst dd = String(tarih.getDate()).padStart(2, '0');\nconst mm = String(tarih.getMonth() + 1).padStart(2, '0');\nconst yyyy = tarih.getFullYear();\nconst yyMM = `${yyyy}${mm}`;\n\nconst tcmbUrl = `https://www.tcmb.gov.tr/kurlar/${yyMM}/${dd}${mm}${yyyy}.xml`;\n\nreturn [{\n  json: {\n    ...data,\n    tcmb_url: tcmbUrl,\n    doviz_birimi: dovizBirimi,\n    kur_tarihi: `${dd}-${mm}-${yyyy}`,\n    skip_tcmb: false\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -1056,
+        1088
+      ],
+      "id": "1800e446-5b7e-4e52-ae97-23afe4ed83a5",
+      "name": "Code in JavaScript4"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.tcmb_url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        -672,
+        1328
+      ],
+      "id": "86015257-ee15-49a0-a98b-8cf386125691",
+      "name": "HTTP Request",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "const aaa = $('Code in JavaScript4').first().json;\n\nif (aaa.skip_tcmb) {\n  const urunler = (aaa.urunler || []).map(urun => ({\n    ...urun,\n    kur_carpani: \"1,00\",\n    toplam_tl: urun.birim_fiyat // veya ilgili tutar alanı\n  }));\n  return [{ json: { ...aaa, urunler, kur_carpanii: \"1,00\" } }];\n}\n\n// ... mevcut XML parse kodu buradan devam eder\nconst xmlText = items[0].json.data;\nconst oncekiVeri = $('Code in JavaScript4').first().json;\nconst doviz = oncekiVeri.doviz_birimi;\n\nlet kur, kurVirgul;\n\nif (!doviz || doviz === 'TL' || doviz === 'TRY') {\n  kur = 1;\n  kurVirgul = '1,00';\n} else {\n  const regex = new RegExp(\n    `<Currency[^>]*CurrencyCode=\"${doviz}\"[^>]*>[\\\\s\\\\S]*?<ForexBuying>([\\\\d.]+)<\\\\/ForexBuying>`,\n    'i'\n  );\n\n  const match = xmlText.match(regex);\n\n  if (!match) {\n    throw new Error(`${doviz} kuru bulunamadı.`);\n  }\n\n  kur = parseFloat(match[1]);\n  kurVirgul = match[1].replace('.', ',');\n}\n\nconst urunler = oncekiVeri.urunler.map(urun => {\n  const fiyat = parseFloat(String(urun.birim_fiyat).replace(',', '.'));\n  const miktar = parseFloat(String(urun.miktar).replace(',', '.'));\n  const toplamTL = (fiyat * miktar * kur).toFixed(2).replace('.', ',');\n\n  return {\n    ...urun,\n    kur_carpani: kurVirgul,\n    toplam_tl: toplamTL\n  };\n});\n\nreturn [{\n  json: {\n    ...oncekiVeri,\n    urunler: urunler,\n    kur_carpanii: kurVirgul\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -416,
+        960
+      ],
+      "id": "a34e08fe-0369-4ddd-8cf9-a4a75d2c5b98",
+      "name": "Code in JavaScript5"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "claude-sonnet-4-5-20250929",
+          "mode": "list",
+          "cachedResultName": "claude-sonnet-4-5-20250929"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=\nSenin görevin: \naşağıda verilen fatura ürün/ürünlerini adına göre senle paylaştığım stok listesiyle karşılaştır.  \n\nBu ürün/ürünlerin isimleri birbirine benziyor olabilir. Doğru olanı bulmak için tüm listeyi tara. Sonra içinde en benzerleri arasında tekrar bir değerlendirme yap. \nFatura ürün/ürünlerini aşağıdaki stok listesi ile karşılaştır.  \n\nKesin Kurallar:  \n1. Sadece verilen stok listesi kullanılabilir. Liste dışındaki ürün isimlerini uydurma.  \n2. Benzerlik kontrolü yaparken:  \n   - Büyük/küçük harf farklarını göz ardı et.  \n   - Türkçe karakter farklılıklarını (i/ı, ö/o, ü/u, ş/s, ç/c, ğ/g) göz ardı et.  \n   - Fazla veya eksik boşlukları önemseme.  \n   - kelimeler sırası değişmiş olsa bile dikkate al.\n3. GİRDİ SAYISI KADAR ÇIKTI ÜRET: Sana kaç adet fatura ürünü verildiyse, çıktında (JSON Array içinde) tam olarak o kadar obje olmalıdır. Sana sadece 1 ürün verildiyse, ÇIKTIDA SADECE 1 OBJE OLMALIDIR. Kesinlikle stok listesinden kafana göre ürün seçip fazladan sonuç uydurma.\n4. Sadece verilen stok listesi kullanılabilir. Liste dışındaki ürün isimlerini uydurma.  \n5. Benzerlik kontrolü yaparken:  \n   - Büyük/küçük harf farklarını göz ardı et.\n6. anahtar türünde olan ürünlerin ismiden master yazabilir\n7. kilit türünde olan ürünlerin isminde kilit yazabilir\n8. Ürün adında hem harf hem de sayı içeren kodlar (ör: BAK0043, CR123A, V4U) varsa:\n   - Bu kod stok listesiyle birebir aynı değilse eşleşme yapılmaz.\n   - Yani \"BAK0436 Plastik Parça\" ile \"BAK0043 Plastik Parça(Küçük)\" ya da \"BAK0143 Plastik Parça\"ile \"BAK0142 Plastik Parça\" kesinlikle eşleşemez.\n9. JSON formatında şu yapıyı döndür:\n   {\n     \"fatura_adi\": \"...\",\n     \"miktar\": \"{{ $json.urunler.miktar }}\",\n     \"birim fiyat\": \"{{ $json.urunler.birim_fiyat }}\",\n     \"stok\": true/false,\n     \"eslesen_stok_adi\": \"...\" veya null,\n   }\n\n\n\nSadece JSON formatında cevap ver.  \n\nFatura ürün/ürünleri:\n{{ $json.urunler.adi }}\nStok listesi:\n{{ $('Code in JavaScript2').first().json.guncel_stok_listesi }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.anthropic",
+      "typeVersion": 1,
+      "position": [
+        720,
+        176
+      ],
+      "id": "1acf9b95-55da-49dd-bce2-81d0e2664b3e",
+      "name": "Message a model2",
+      "credentials": {
+        "anthropicApi": {
+          "id": "GSgB2w16WLmZIdOC",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "caed212a-546a-4b0f-ae7d-82bdfc107e8b",
+              "leftValue": "={{ $json.fatura_no }}",
+              "rightValue": "EBT",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1360,
+        864
+      ],
+      "id": "2b504a94-6c07-484d-a37a-7c55a9bd215e",
+      "name": "If7",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1648,
+        960
+      ],
+      "id": "2c0d3398-2228-4075-8f9f-5f20dacef075",
+      "name": "No Operation, do nothing2"
+    },
+    {
+      "parameters": {
+        "mode": "runOnceForEachItem",
+        "jsCode": "const raw = item.json.content?.[0]?.text || \"\";\n\nif (!raw.trim()) {\n  throw new Error(\"Message a model2 boş yanıt döndürdü. Girdi: \" + JSON.stringify(item.json).slice(0, 500));\n}\n\nlet clean = raw.replace(/```json\\s*/gi, '').replace(/```/g, '').trim();\n\nlet parsed;\ntry {\n  const asIs = JSON.parse(clean);\n  parsed = Array.isArray(asIs) ? asIs[0] : asIs;\n} catch (err) {\n  const first = clean.indexOf('{');\n  const last = clean.lastIndexOf('}');\n  if (first === -1 || last === -1 || last <= first) {\n    throw new Error(\"Geçerli JSON bulunamadı. Ham çıktı: \" + clean.slice(0, 500));\n  }\n  parsed = JSON.parse(clean.substring(first, last + 1));\n}\n\nif (typeof parsed.stok === 'string') {\n  parsed.stok = parsed.stok.toLowerCase() === 'true';\n}\n\nconst orijinalUrun = $('Merge').item.json.urunler;\nparsed.miktar = orijinalUrun?.miktar ?? \"\";\nparsed[\"birim fiyat\"] = orijinalUrun?.birim_fiyat ?? \"\";\n\nreturn {\n  json: {\n    message: { content: parsed }\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1072,
+        176
+      ],
+      "id": "687579ea-fd61-4444-96bb-03fa72575aad",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "493a9691-ef56-4025-8569-5c0fbfd20e10",
+              "leftValue": "={{ $json.TCKN }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        272,
+        1440
+      ],
+      "id": "675f5911-b75f-4b27-b321-9d6da9dc3142",
+      "name": "If8"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c",
+          "mode": "list",
+          "cachedResultName": "muhasebe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "gelen",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        496,
+        1728
+      ],
+      "id": "ca91a376-4700-419d-b3c0-6e1b231f4d64",
+      "name": "Get row(s) in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c",
+          "mode": "list",
+          "cachedResultName": "muhasebe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1798447486,
+          "mode": "list",
+          "cachedResultName": "giden",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit#gid=1798447486"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        496,
+        1536
+      ],
+      "id": "87a8ed71-3113-4d8d-b778-6dc43cd4e11c",
+      "name": "Get row(s) in sheet2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        784,
+        1632
+      ],
+      "id": "a70052f4-b088-4658-9bd4-ff25bf63569b",
+      "name": "Merge2"
+    },
+    {
+      "parameters": {
+        "jsCode": "const gorulen = new Set();\nconst satirlar = [];\n\nfor (const item of items) {\n  const firma = item.json['Şirket ismi'];\n  const vkn = item.json['VKN'];\n  if (!firma || !vkn) continue;\n\n  const firmaStr = String(firma).trim();\n  const vknStr = String(vkn).trim();\n\n  const anahtar = firmaStr.toLowerCase() + '|' + vknStr;\n  if (gorulen.has(anahtar)) continue;\n  gorulen.add(anahtar);\n\n  satirlar.push(`${firmaStr} - ${vknStr}`);\n}\n\nreturn [{ json: { cari_listesi: satirlar.join('\\n') } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1072,
+        1632
+      ],
+      "id": "5c6fa2ce-9693-4565-9f41-1d7cfc304fce",
+      "name": "Code in JavaScript6"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "claude-sonnet-4-6",
+          "mode": "list",
+          "cachedResultName": "claude-sonnet-4-6"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Aşağıdaki makbuzdan çıkarılan firma/kişi adını, sana verdiğim cari listesiyle karşılaştır.\nTürkçe karakter farklarını (i/ı, ö/o, ü/u, ş/s, ç/c, ğ/g), büyük/küçük harf farklarını, \nfazla/eksik boşlukları göz ardı et.\n\nSadece JSON formatında cevap ver, açıklama yazma, ``` kullanma.\n\n{\n  \"makbuz_adi\": \"...\",\n  \"kesin_eslesme\": true/false,\n  \"adaylar\": [\n    { \"firma\": \"...\", \"vkn\": \"...\" }\n  ]\n}\n\nKurallar:\n- Net, tek bir eşleşme varsa \"kesin_eslesme\": true, \"adaylar\" içinde SADECE 1 obje olsun.\n- Emin değilsen veya birden fazla benzer isim varsa \"kesin_eslesme\": false, en olası 3 adayı listele.\n- Liste dışında isim/VKN uydurma.\n\nMakbuz üzerindeki isim: {{ $('Edit Fields1').item.json.Firma }}\n\nCari Listesi:\n{{ $json.cari_listesi }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.anthropic",
+      "typeVersion": 1,
+      "position": [
+        1296,
+        1632
+      ],
+      "id": "e0672000-c94f-4e25-88d6-f764fe4d35c3",
+      "name": "Message a model",
+      "credentials": {
+        "anthropicApi": {
+          "id": "GSgB2w16WLmZIdOC",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = items[0].json.content[0].text;\nlet clean = raw.replace(/```json\\s*/gi, '').replace(/```/g, '').trim();\n\nconst first = clean.indexOf('{');\nconst last = clean.lastIndexOf('}');\nif (first !== -1 && last !== -1) {\n  clean = clean.substring(first, last + 1);\n}\n\nlet parsed = JSON.parse(clean);\n\nif (typeof parsed.kesin_eslesme === 'string') {\n  parsed.kesin_eslesme = parsed.kesin_eslesme.toLowerCase() === 'true';\n}\nparsed.adaylar = Array.isArray(parsed.adaylar) ? parsed.adaylar : [];\n\nreturn [{ json: parsed }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1648,
+        1632
+      ],
+      "id": "af9fdcc0-64dd-4dca-ac3f-2eb9cfcf8453",
+      "name": "Code in JavaScript7"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "f7732ffd-17b4-4af6-a60d-d27708d60cb6",
+              "leftValue": "={{ $json.skip_tcmb }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -848,
+        1088
+      ],
+      "id": "1d52430c-b01b-4f89-bccf-9fce92e4222b",
+      "name": "If9"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "83ad52a2-0f6d-4f55-a13a-7c8686f098d8",
+              "leftValue": "={{ $json.kesin_eslesme }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1856,
+        1632
+      ],
+      "id": "d287f123-f35f-4b99-8a5b-fc031180d330",
+      "name": "If10"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"TCKN\": \"{{ $json.adaylar[0].vkn }}\",\n  \"Firma\": \"{{ $json.adaylar[0].firma }}\",\n  \"Chat ID\": \"{{ $('Edit Fields1').item.json['Chat ID'] }}\",\n  \"Tarih\": \"{{ $('Edit Fields1').item.json.Tarih }}\",\n  \"Fatura No\": \"{{ $('Edit Fields1').item.json['Fatura No'] }}\",\n  \"Ödenecek Tutar TL\": \"{{ $('Edit Fields1').item.json['Ödenecek Tutar TL'] }}\",\n  \"Ödenecek Tutar Dvz\": \"{{ $('Edit Fields1').item.json['Ödenecek Tutar Dvz'] }}\"\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2144,
+        1616
+      ],
+      "id": "6d3f733e-5f65-4ab1-ab4a-406bdeefba9e",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "resume": "webhook",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2032,
+        1856
+      ],
+      "id": "44814b9b-a044-40f5-9834-2a0f58946d60",
+      "name": "Wait",
+      "webhookId": "7c2703f6-fb4e-4f93-b904-7cc5e3d376d4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "07e7367c-b84c-4ed2-b690-8849238da5fa",
+              "leftValue": "={{ $('When Executed by Another Workflow').item.json.evrakCinsi }}",
+              "rightValue": "14",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -304,
+        624
+      ],
+      "id": "7c5c0ae4-5470-447b-8097-ac465040d294",
+      "name": "If11"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        32,
+        640
+      ],
+      "id": "ee16edaa-38f0-4212-a9b7-68a5b797fedd",
+      "name": "No Operation, do nothing3"
+    },
+    {
+      "parameters": {
+        "jsCode": "const oncekiVeri = $('Code in JavaScript4').first().json;\n\n// kur_tarihi \"DD-MM-YYYY\" formatında\nconst [gun, ay, yil] = oncekiVeri.kur_tarihi.split('-').map(Number);\nlet tarih = new Date(yil, ay - 1, gun);\n\n// Kaç kez geriye gittiğimizi say (sonsuz döngü koruması)\nlet denemeSayisi = (oncekiVeri.tcmb_deneme_sayisi || 0) + 1;\n\nif (denemeSayisi > 10) {\n  throw new Error(\"10 gün geriye gidildi, TCMB verisi bulunamadı. Orijinal tarih: \" + oncekiVeri.belge_tarihi);\n}\n\n// Bir gün daha geriye git, hafta sonunu atla\ntarih.setDate(tarih.getDate() - 1);\nwhile (tarih.getDay() === 0 || tarih.getDay() === 6) {\n  tarih.setDate(tarih.getDate() - 1);\n}\n\nconst dd = String(tarih.getDate()).padStart(2, '0');\nconst mm = String(tarih.getMonth() + 1).padStart(2, '0');\nconst yyyy = tarih.getFullYear();\nconst yyMM = `${yyyy}${mm}`;\n\nconst yeniUrl = `https://www.tcmb.gov.tr/kurlar/${yyMM}/${dd}${mm}${yyyy}.xml`;\n\nreturn [{\n  json: {\n    ...oncekiVeri,\n    tcmb_url: yeniUrl,\n    kur_tarihi: `${dd}-${mm}-${yyyy}`,\n    tcmb_deneme_sayisi: denemeSayisi\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -512,
+        1504
+      ],
+      "id": "d178c0d0-4d5b-4f43-9015-09617e937cd1",
+      "name": "Code in JavaScript8"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "If7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File1": {
+      "main": [
+        [
+          {
+            "node": "Message a model3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Get a file2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Analyze image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze image": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet2": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet3": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Message a model2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Insert row",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "No Operation, do nothing": {
+      "main": [
+        []
+      ]
+    },
+    "Insert row": {
+      "main": [
+        []
+      ]
+    },
+    "Get a file2": {
+      "main": [
+        [
+          {
+            "node": "Extract from File1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message1": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        []
+      ]
+    },
+    "Merge1": {
+      "main": [
+        []
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "If8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Copy file": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Copy file",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Append row in sheet5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet5": {
+      "main": [
+        [
+          {
+            "node": "Send a text message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet6": {
+      "main": [
+        [
+          {
+            "node": "Send a text message2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model3": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript3": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript4": {
+      "main": [
+        [
+          {
+            "node": "If9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Code in JavaScript8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript5": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "If11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If7": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "If8": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get row(s) in sheet1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get row(s) in sheet2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet2": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript6": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If9": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If11",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript7": {
+      "main": [
+        [
+          {
+            "node": "If10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If10": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If11": {
+      "main": [
+        [
+          {
+            "node": "No Operation, do nothing3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript8": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate"
+  },
+  "versionId": "badd495c-5b89-4839-b29e-23edc4816385",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "490ae940fc888e81dc6fc40589fccfe88e651233e3f199cede2f621b6beb279c"
+  },
+  "nodeGroups": [],
+  "id": "IET9JwaadUZ2GJLt",
+  "tags": []
+}
