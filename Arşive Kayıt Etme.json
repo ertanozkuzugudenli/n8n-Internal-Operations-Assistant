@@ -1,0 +1,6249 @@
+{
+  "name": "Arşive Kayıt Etme",
+  "nodes": [
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('If').item.json['Paylasim Yetkisi'] }}",
+                    "rightValue": "=1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "aa9764c2-3257-4d3c-a29a-70f501c4cb0d"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Genel"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "566aa4c9-08fe-495c-8def-ffc3aab10314",
+                    "leftValue": "={{ $('If').item.json['Paylasim Yetkisi'] }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Ozel"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1632,
+        1088
+      ],
+      "id": "14c723a7-257a-4951-8eaf-b614411110e2",
+      "name": "Switch",
+      "alwaysOutputData": false,
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('If').item.json['Evrak Yonu'] }}",
+                    "rightValue": "1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "5e9293d3-fe65-41ce-bc21-3aab17628250"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Gelen"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "bea6916d-38d2-4fee-b688-53a3626d95df",
+                    "leftValue": "={{ $('If').item.json['Evrak Yonu'] }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Giden"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2976,
+        32
+      ],
+      "id": "c92f9bfd-6f20-417c-9c44-2f62fb6b50b3",
+      "name": "Switch1",
+      "retryOnFail": true,
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('If').item.json['Evrak Yonu'] }}",
+                    "rightValue": "1",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "5e9293d3-fe65-41ce-bc21-3aab17628250"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Gelen"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7c4678c3-22e8-43e4-b76a-98e65df06614",
+                    "leftValue": "={{ $('If').item.json['Evrak Yonu'] }}",
+                    "rightValue": "2",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Giden"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1856,
+        1760
+      ],
+      "id": "a9767ae6-ec15-4ba8-bd72-b716c5c46a28",
+      "name": "Switch2",
+      "alwaysOutputData": false,
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "01",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "5e9293d3-fe65-41ce-bc21-3aab17628250"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Fatura"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "bea6916d-38d2-4fee-b688-53a3626d95df",
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "02",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Teklif"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "b2f5bedc-24ce-4bc8-8477-64b4a5c7b371",
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "18",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Belirsiz"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1e41aad7-8c40-4a19-a33a-ed80ca9d902f",
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "17",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Policeler"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "4f08cd95-01ce-4cae-8273-c4df960ad720",
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "09",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Çeki Listesi Sevk"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "34c7e31d-d1cb-439c-bc62-4527bba1acbc",
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "03",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Sipariş"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        3200,
+        -400
+      ],
+      "id": "ff4027c2-92da-4ea9-abf6-493276a52acb",
+      "name": "Switch3",
+      "alwaysOutputData": false,
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "01",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "5e9293d3-fe65-41ce-bc21-3aab17628250"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Fatura"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "bea6916d-38d2-4fee-b688-53a3626d95df",
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "02",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Teklif"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        3200,
+        624
+      ],
+      "id": "fe5b1a88-85a1-43fa-894b-cf098e5a41fc",
+      "name": "Switch4",
+      "alwaysOutputData": false,
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "01",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "5e9293d3-fe65-41ce-bc21-3aab17628250"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Fatura"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "bea6916d-38d2-4fee-b688-53a3626d95df",
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "02",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Teklif"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "b2f5bedc-24ce-4bc8-8477-64b4a5c7b371",
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "12",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "İhracat"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "3c04cd32-fddd-4264-aa6f-e21fd047a9c2",
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "09",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Ceki List ve Sevk"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "11f2ffe1-c01a-4778-9606-e0f04d22d64b",
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "11",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Ex Beyanname"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "30788c1f-e188-44c7-92f3-068c87f96472",
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "16",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Invoice"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2080,
+        2656
+      ],
+      "id": "ea864f44-da67-4ed1-865f-d12ca53bb68e",
+      "name": "Switch5",
+      "alwaysOutputData": false,
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "01",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "5e9293d3-fe65-41ce-bc21-3aab17628250"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "=Fatura"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "bea6916d-38d2-4fee-b688-53a3626d95df",
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "02",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Teklif"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "f576f90c-af1f-4642-a2e1-973e5e0823cf",
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "10",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "İthalat"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c2b7f5cf-415e-4456-ab1d-8bb5bc00d4f6",
+                    "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+                    "rightValue": "11",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "IM Beyanname"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2304,
+        1072
+      ],
+      "id": "d45ec812-a1ac-4259-b287-45fd82ec7814",
+      "name": "Switch6",
+      "alwaysOutputData": false,
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1UoCtfLV6o02uuStfOguS8hFDmXtpr06f",
+          "mode": "list",
+          "cachedResultName": "Genel Gelen Fatura",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1UoCtfLV6o02uuStfOguS8hFDmXtpr06f"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        -624
+      ],
+      "id": "800f7f41-b3d5-4f18-8690-b751d091ab22",
+      "name": "Upload file",
+      "executeOnce": false,
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1ZcMmQ4Cx0Q6HryPR4De9gaNgyP-ZwPmh",
+          "mode": "list",
+          "cachedResultName": "Genel Gelen Teklif",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1ZcMmQ4Cx0Q6HryPR4De9gaNgyP-ZwPmh"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        -384
+      ],
+      "id": "a82eebca-c416-4c9c-8c66-f607daf47ee3",
+      "name": "Upload file1",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1-AgCV6eKspXEQ9WybLRwrGdWPBv7YZ8_",
+          "mode": "list",
+          "cachedResultName": "Belirsiz",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1-AgCV6eKspXEQ9WybLRwrGdWPBv7YZ8_"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        -192
+      ],
+      "id": "047e62ff-59dc-4a3f-9266-8d61d29e3e64",
+      "name": "Upload file2",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1fy7xxahzalo__5X2k4qaIKXVqk_apCey",
+          "mode": "list",
+          "cachedResultName": "Policeler",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1fy7xxahzalo__5X2k4qaIKXVqk_apCey"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        0
+      ],
+      "id": "820c6b5a-0150-4ad8-9af6-040f2e1b1f61",
+      "name": "Upload file4",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1x1RLngzHxdQcLRkqTzGXJuiL3OsgmQC6",
+          "mode": "list",
+          "cachedResultName": "Genel Giden Fatura",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1x1RLngzHxdQcLRkqTzGXJuiL3OsgmQC6"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        576
+      ],
+      "id": "444e5b0a-ce19-4005-b17b-d7b706c8058d",
+      "name": "Upload file5",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1M90ko21Z0LtMILihsM_Dag4xYL7N85D4",
+          "mode": "list",
+          "cachedResultName": "Genel Giden Teklif",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1M90ko21Z0LtMILihsM_Dag4xYL7N85D4"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        768
+      ],
+      "id": "ce412164-72d4-440a-9395-e041fd04ccc0",
+      "name": "Upload file6",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1nDfLnLMYQHJqBDET1gUGtxAYb4L_m27-",
+          "mode": "list",
+          "cachedResultName": "Özel Gelen Fatura ",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1nDfLnLMYQHJqBDET1gUGtxAYb4L_m27-"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        1152
+      ],
+      "id": "8fc64e12-5a06-4399-83ec-ce281dd8ccc1",
+      "name": "Upload file7",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1jGmvzb8xiT_BjFW2df_jpfBuSWmzuTCY",
+          "mode": "list",
+          "cachedResultName": "İthalatlar",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1jGmvzb8xiT_BjFW2df_jpfBuSWmzuTCY"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        1728
+      ],
+      "id": "036ae6ea-9fda-465d-b65d-31994653a664",
+      "name": "Upload file9",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1zbg8dPK2l2_zCK8by1N1Q-GCOO_xQjpX",
+          "mode": "list",
+          "cachedResultName": "Özel Giden Fatura",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1zbg8dPK2l2_zCK8by1N1Q-GCOO_xQjpX"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        1920
+      ],
+      "id": "733d06be-a93b-4408-b23b-48dbeef9b72d",
+      "name": "Upload file10",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1kGc7RABYmErg2V4E5yBAxKUPoOul74C4",
+          "mode": "list",
+          "cachedResultName": "Özel Giden Teklif",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1kGc7RABYmErg2V4E5yBAxKUPoOul74C4"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        2928
+      ],
+      "id": "86c4628e-f4c8-44af-958d-0c3730fd7800",
+      "name": "Upload file11",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1WRj5t5jFU9kJxnxmGuN0zI-nuii00xFo",
+          "mode": "list",
+          "cachedResultName": "İhracatlar",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1WRj5t5jFU9kJxnxmGuN0zI-nuii00xFo"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        3120
+      ],
+      "id": "2cc91856-5bb8-4301-a377-7bc1ee43e1d9",
+      "name": "Upload file12",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1XivYDCVDysH-UZ9W7wvixtgGHJFM61aj",
+          "mode": "list",
+          "cachedResultName": "CekiList-Sevk",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1XivYDCVDysH-UZ9W7wvixtgGHJFM61aj"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        192
+      ],
+      "id": "c8e90a93-ca9e-4ffc-8ddd-26948df450e1",
+      "name": "Upload file13",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "=2.{{ $('If').item.json['Ana Is Kolu'] }}.{{ $('If').item.json['Karsit Firma'] }}.2.12.{{ $('If').item.json.Tarih }}.1",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "1WRj5t5jFU9kJxnxmGuN0zI-nuii00xFo",
+            "mode": "list",
+            "cachedResultName": "İhracatlar",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1WRj5t5jFU9kJxnxmGuN0zI-nuii00xFo"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2752,
+        2160
+      ],
+      "id": "d8f88da8-858d-4c0d-9259-1426b4e8885a",
+      "name": "Search files and folders",
+      "alwaysOutputData": true,
+      "executeOnce": false,
+      "notesInFlow": false,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.id }}",
+                    "rightValue": "={{ $json.name }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    },
+                    "id": "68b105a2-0a74-4fde-b166-42c088f248f7"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Dosyaya Kaydet"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1dac7018-610f-42e9-a1ea-89caade8eed5",
+                    "leftValue": "={{ $json.id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Klasör Aç"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2976,
+        2160
+      ],
+      "id": "f148253c-0812-46a2-b836-f88dc172e8cb",
+      "name": "Switch7"
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "=2.{{ $('Merge7').item.json['Ana Is Kolu'] }}.{{ $('Merge7').item.json['Karsit Firma'] }}.2.12.{{ $('Merge7').item.json.Tarih }}.1",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1WRj5t5jFU9kJxnxmGuN0zI-nuii00xFo",
+          "mode": "list",
+          "cachedResultName": "İhracatlar",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1WRj5t5jFU9kJxnxmGuN0zI-nuii00xFo"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3200,
+        2304
+      ],
+      "id": "38436bb6-49d1-442e-9d8a-9686527cb49c",
+      "name": "Create folder",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Search files and folders').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3856,
+        2112
+      ],
+      "id": "3f0db92f-d4bf-48f0-80eb-72da00c94036",
+      "name": "Upload file14",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        3408,
+        2112
+      ],
+      "id": "ed8a85cf-585b-477e-b312-a5af74af53a2",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Create folder').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        2352
+      ],
+      "id": "4dbe1606-1bda-44e5-aa3f-0708771af25f",
+      "name": "Upload file15",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        3424,
+        2352
+      ],
+      "id": "1b7cd553-275c-4d9a-9cb6-fd2a7e6a60c7",
+      "name": "Merge2"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "=2.{{ $('If').item.json['Ana Is Kolu'] }}.{{ $('If').item.json['Karsit Firma'] }}.1.10.{{ $('If').item.json.Tarih }}.1",
+        "filter": {
+          "folderId": {
+            "__rl": true,
+            "value": "1jGmvzb8xiT_BjFW2df_jpfBuSWmzuTCY",
+            "mode": "list",
+            "cachedResultName": "İthalatlar",
+            "cachedResultUrl": "https://drive.google.com/drive/folders/1jGmvzb8xiT_BjFW2df_jpfBuSWmzuTCY"
+          }
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2752,
+        1392
+      ],
+      "id": "a1d90cab-572e-43a0-ad70-a7e5a349f436",
+      "name": "Search files and folders1",
+      "alwaysOutputData": true,
+      "executeOnce": false,
+      "notesInFlow": false,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.id }}",
+                    "rightValue": "={{ $json.name }}",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    },
+                    "id": "68b105a2-0a74-4fde-b166-42c088f248f7"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Dosyaya Kaydet"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1dac7018-610f-42e9-a1ea-89caade8eed5",
+                    "leftValue": "={{ $json.id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "empty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Klasör Aç"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        2976,
+        1392
+      ],
+      "id": "59916682-ca7d-4fef-a9bd-c1daa5bcbcde",
+      "name": "Switch8",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "resource": "folder",
+        "name": "=2.{{ $('Edit Fields1').item.json['Ana Is Kolu'] }}.{{ $('Edit Fields1').item.json['Karsit Firma'] }}.1.10.{{ $('Edit Fields1').item.json.Tarih }}.1",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1jGmvzb8xiT_BjFW2df_jpfBuSWmzuTCY",
+          "mode": "list",
+          "cachedResultName": "İthalatlar",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1jGmvzb8xiT_BjFW2df_jpfBuSWmzuTCY"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3200,
+        1536
+      ],
+      "id": "764a686c-d392-4c5a-9d27-790d51cf7902",
+      "name": "Create folder1",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $('Search files and folders1').item.json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        1344
+      ],
+      "id": "8a42eeb7-cb3b-43cf-8225-5c99b353dbcf",
+      "name": "Upload file16",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        3200,
+        1344
+      ],
+      "id": "8f9565d2-fad1-4d6d-a368-ec464727f93a",
+      "name": "Merge3"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        1536
+      ],
+      "id": "3cdabec2-5606-4c1e-be98-ddc8e35cdf09",
+      "name": "Upload file17",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        3424,
+        1536
+      ],
+      "id": "14140028-a5f7-44b2-baf6-7b8489e619a7",
+      "name": "Merge4"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger1').item.json.message.from.id }}",
+        "text": "Eşleşme Hatası. Tekrar gönder",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        960,
+        3568
+      ],
+      "id": "a31b81fa-50f7-477f-b501-b11c1af91515",
+      "name": "Send a text message1",
+      "webhookId": "decedec1-fc92-4ab5-9270-71fa6b026387",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger1').item.json.message.from.id }}",
+        "text": "Kayıt Hatası - Drive Bağlantısında Sorun var",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        4080,
+        1344
+      ],
+      "id": "5d4829bb-7c50-4af6-9a5b-34ad697f72ae",
+      "name": "Hata Mesajı",
+      "webhookId": "6f095f78-d338-4aa4-968a-c2a487530ca6",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger1').item.json.message.from.id }}",
+        "text": "=Aferin sana yakışıklı\n\nKayıt no: {{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        4080,
+        1056
+      ],
+      "id": "a8437194-d7ba-4321-ac57-486dabb1e23b",
+      "name": "Onay Mesajı",
+      "webhookId": "ba9232eb-4af2-4d48-adfd-b86a56f00330",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-flash-latest",
+          "mode": "list",
+          "cachedResultName": "models/gemini-flash-latest"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=GIRDILER\nText: {{ $json.text }}\nCaption: {{ $('Telegram Trigger1').item.json.message.caption }}\nMesaj Id: {{ $('Telegram Trigger1').item.json.message.from.id }}\nBizim Sirketimizin Ismi: EBT GRUP\nCIKTI KURALI\nYorum yapma. Aciklama yazma.\nSadece asagidaki JSON formatinda cikti uret:\n{\n\"Formul\": \"\",\n\"Evrak Cinsi\": \"JK\",\n\"Evrak Yonu\": \"H\",\n\"Paylasim Yetkisi\": \"A\",\n\"Tarih\": \"XYZLMN\",\n\"Karsit Firma\": \"EFG\",\n\"Ana Is Kolu\": \"BCDR\",\n\"Senaryo\": \"\"\n\"Fatura No\":\"\"\n}\nGENEL KURALLAR\nTum degerler BUYUK HARF ve INGILIZCE KARAKTER olmak zorundadir.\n"
+            },
+            {
+              "content": "PAYLASIM YETKISI (A)\nEger Mesaj Id = 8402855302 ise Paylasim Yetkisi her zaman 1’dir ve Caption dikkate alinmaz.\nAksi durumda Paylasim Yetkisi Caption icindeki ilk sayisal bilgidir.\nBu deger Paylasim Yetkisi alanina yazilir ve formulun ilk bolumunu olusturur."
+            },
+            {
+              "content": "ANA IS KOLU (BCDR)\nCaption icinde metin olarak yer alir.\nSadece su degerlerden biri olabilir:\nBURG, FMAL, FMAV, ERIK, CINN, ENPA, GENL\nBulunan deger Ana Is Kolu alanina yazilir ve formulde BCDR bolumunu olusturur."
+            },
+            {
+              "content": "KARSIT FIRMA (EFG)\nText verisinin üst kısmı (header) analiz edilir.\nEBT GRUP (veya EBT LOJİSTİK vb.) ifadesi içeren satırlar tamamen yok sayılır.\n\nHedef: Belgedeki EBT GRUP dışındaki diğer ana firmanın (Satıcı veya Alıcı) adını bulmaktır.\nArama Kuralları:\n1. Satır sınırlaması yoktur, ancak genellikle üst kısımdadır.\n2. Firma ismi metinde Büyük/Küçük harf karışık yazılmış olabilir (Örn: \"Duru Lojistik\"). Ancak çıktı her zaman BÜYÜK HARF olacaktır.\n3. Şu kelimeleri içeren satırlar firma ismi olamaz: \"VERGI\", \"V.D.\", \"NO:\", \"MAHALLESI\", \"SOKAK\", \"CADDE\", \"TEL:\", \"MAIL\", \"FATURA\", \"ADRES\".\n4. Eger \"SAYIN\" kelimesi varsa, hemen yanındaki veya altındaki isim alınır.\n5. Firma ismi bulunduktan sonra sonundaki ticari ekler (STI, SIRKETI, LTD, A.S., INC, TIC, SAN vb.) ve noktalama işaretleri temizlenir.\n6. Kalan ismin İLK İKİ KELİMESİ alınır.\n7. Bu iki kelime boşluksuz birleştirilir ve İNGİLİZCE KARAKTERLERLE BÜYÜK HARFE çevrilir.\nÖrnekler:\n- Metin: \"Yılmazlar İnşaat Malz. San. ve Tic. Ltd. Şti.\" -> Çıktı: YILMAZLARINSAAT\n- Metin: \"SAYIN AHMET YILDIZ NAKLİYAT\" -> Çıktı: AHMETYILDIZ\n- Metin: \"MİGROS TİCARET.A.Ş.\" -> Çıktı: MIGROSTICARET\n- Metin: \"Enpatec GmbH\" -> Çıktı: ENPATECGMBH\n\nEğer hiçbir şekilde firma ismi tespit edilemezse: BULUNAMADI yazılır.\n\nBu değer Karsit Firma alanına yazılır ve formülde EFG bölümünü oluşturur."
+            },
+            {
+              "content": "EVRAK YONU (H)\nText alani incelenir.\nOncelik sirasi asagidaki gibidir ve yukaridaki saglanirsa alttakiler dikkate alinmaz:\nEger evrak metninde \"Gümrük Beyannamesi\", \"Beyanname\" ibareleri geciyorsa veya evrak numarasinda/turunde bagimsiz bir sekilde \"EX\" (İhracat) kodu bulunuyorsa, EVRAK YONU = 2 olur. Eger bagimsiz bir sekilde \"IM\" (İthalat) kodu bulunuyorsa, EVRAK YONU = 1 olur.\nEger belgenin en ustunde/basliginda \"EBT GRUP\" yer aliyorsa VE \"ALICI\", \"ALICI FIRMA\" veya \"SAYIN\" ibaresinden sonra EBT GRUP disinda baska bir firma adi geliyorsa (ornek: Vera Ofis vb.), bu belgeyi BIZ KESMISIZDIR ve EVRAK YONU = 2 olur.\nEger EBT GRUP ismi SAYIN veya ALICI kelimesinden hemen sonra ya da bir alt satirda yer aliyorsa, EVRAK YONU = 1 olur.\nEger SAYIN veya ALICI kelimeleri hic yoksa ya da evrak yonu buradan anlasilamiyorsa, FATURA NUMARASI kontrol edilir.\nFatura numarasi EB, BE, EBT veya EBA ile basliyorsa, bu faturayi BIZ KESMISIZDIR ve EVRAK YONU = 2 olur.\nYukaridaki iki kosul da saglanmiyorsa, EVRAK YONU = 1 kabul edilir.\nBu deger Evrak Yonu alanina yazilir ve formulde H bolumunu olusturur."
+            },
+            {
+              "content": "EVRAK CINSI (JK)\n01 FATURA: Evrakta Senaryo yazar ve ardindan TICARIFATURA, TEMELFATURA, EARSIVFATURA, FATURA veya IHRACAT kelimelerinden biri bulunur.\n02 PROFORMA: \"arda@ebtgrup.com\" ifadesinden sonra ilk kelime PROFORMA olur.\n03 SIPARIS FORMU:\"arda@ebtgrup.com\" ifadesinden sonra ilk kelime SIPARIS FORMU olur.\n09 CEKI LISTESI: \"arda@ebtgrup.com\" ifadesinden sonra ilk kelime CEKI LISTESI veya PACKING LIST olur.\n10 ITHALAT KLASORU: Klasordur, PDF olamaz.\n11 BEYANNAME: \"T.C. GUMRUK BEYANNAMESI\" ifadesi ve 8 rakam + EX/IM/AN + 8 rakamdan olusan 18 haneli kod bulunur. IM ithalat, AN antrepo, EX ihracat beyannamesidir.\n12 IHRACAT KLASORU: Klasordur, PDF olamaz.\n13 URUN DOSYASI.\n16 INVOICE: \"arda@ebtgrup.com\" ifadesinden sonra ilk kelime INVOICE olur.\n17 POLICE: Ilk satirlardan birinde SIGORTA POLICESI ifadesi bulunur.\n18 BELIRSIZ: Ne oldugu net olmayan evraklar icin kullanilir, Caption bilgisine bakilir.\nBulunan kod Evrak Cinsi alanina yazilir ve formulde JK bolumunu olusturur."
+            },
+            {
+              "content": "SENARYO\nSenaryo sadece FATURA (01) evrak cinsinde doldurulur.\nDiger tum evraklarda Senaryo BOS yazilir."
+            },
+            {},
+            {
+              "content": "TARIH (XYZLMN)\nEvrak icinde mutlaka tarih bulunur.\nTARIH:, … TARIHI veya benzeri ifadeler seklinde yer alabilir.\nBirden fazla tarih varsa TARIH: ifadesine en yakin olan tarih kullanilir.\nTarih YYMMDD formatinda 6 haneli yazilir.\nBeyannamelerde tarih GUMRUK MUDURLUGU ifadesinden hemen sonra yer alir.\nBu deger Tarih alanina yazilir ve formulde XYZLMN bolumunu olusturur."
+            },
+            {
+              "content": "FORMUL\nTum alanlar birlestirilerek su sekilde yazilir:\nA.BCDR.EFG.H.JK.XYZLMN"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        -272,
+        3632
+      ],
+      "id": "06cd1013-6148-48c8-8074-ba2d7a8f391e",
+      "name": "Message a model2",
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "credentials": {
+        "googlePalmApi": {
+          "id": "a5Oj26XrO72FzlrI",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  const rawText =\n    item.json.content?.[0]?.text ||\n    item.json.message?.content?.[0]?.text ||\n    item.json.text;\n\n  const cleanText = rawText\n    .replace(/```json\\s*/gi, '')\n    .replace(/```\\s*/g, '')\n    .trim();\n\n  const parsed = JSON.parse(cleanText);\n\n  return {\n    json: {\n      formul: parsed.Formul,\n      evrakCinsi: parsed[\"Evrak Cinsi\"],\n      evrakYonu: parsed[\"Evrak Yonu\"],\n      paylasimYetkisi: parsed[\"Paylasim Yetkisi\"],\n      tarih: parsed.Tarih,\n      karsitFirma: parsed[\"Karsit Firma\"],\n      anaIsKolu: parsed[\"Ana Is Kolu\"],\n      senaryo: parsed.Senaryo,\n      faturaNo: parsed[\"Fatura No\"]\n    }\n  };\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -752,
+        3264
+      ],
+      "id": "9c444352-ed45-4671-9d27-c9a4fc59cf25",
+      "name": "Code in JavaScript",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {
+          "download": true
+        }
+      },
+      "id": "a700fdd4-e8b0-427a-bd05-aeaddb4116c2",
+      "name": "Telegram Trigger1",
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1,
+      "position": [
+        -2304,
+        3616
+      ],
+      "webhookId": "82d96d23-3cc7-4e55-94a6-dadf4139988a",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1408,
+        1376
+      ],
+      "id": "d036b4d0-cbdd-4b46-a66e-acadf3ab6cfe",
+      "name": "Merge5",
+      "alwaysOutputData": false,
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        -736,
+        3648
+      ],
+      "id": "02b5efbc-487f-4a27-b192-8ca2da1a657c",
+      "name": "Extract from File2",
+      "retryOnFail": true,
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.document }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "object",
+                      "operation": "exists",
+                      "singleValue": true
+                    },
+                    "id": "e5eebc33-a684-42a0-93cb-6b54a484c174"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "PDF"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "0d38fc1a-8f7c-49ef-a614-57157113e34e",
+                    "leftValue": "={{ $json.message.text }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "TEXT"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "738baab4-9c27-48ac-88a7-28748de98dd8",
+                    "leftValue": "={{ $json.message.photo }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "array",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "fis"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -1184,
+        3696
+      ],
+      "id": "e1c31b7d-465c-4412-afd6-5b491de80e2a",
+      "name": "Switch10",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-pro",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-pro"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=GIRDILER\nText: {{ $json.text }}\nCaption: {{ $('Telegram Trigger1').item.json.message.caption }}\nMesaj Id: {{ $('Telegram Trigger1').item.json.message.from.id }}\nBizim Sirketimizin Ismi: EBT GRUP\nCIKTI KURALI\nYorum yapma. Aciklama yazma.\nSadece asagidaki JSON formatinda cikti uret:\n{\n\"Formul\": \"\",\n\"Evrak Cinsi\": \"JK\",\n\"Evrak Yonu\": \"H\",\n\"Paylasim Yetkisi\": \"A\",\n\"Tarih\": \"XYZLMN\",\n\"Karsit Firma\": \"EFG\",\n\"Ana Is Kolu\": \"BCDR\",\n\"Senaryo\": \"\"\n}\nGENEL KURALLAR\n-Tum degerler BUYUK HARF ve INGILIZCE KARAKTER olmak zorundadir.\n-Formul nokta ile ayrilir.\n-Formul yapisi: A.BCDR.EFG.H.JK.XYZLMN\nPAYLASIM YETKISI (A)\nEger Mesaj Id = 8402855302 ise Paylasim Yetkisi her zaman 1’dir ve Caption dikkate alinmaz.\nAksi durumda Paylasim Yetkisi Caption icindeki ilk sayisal bilgidir.\nBu deger Paylasim Yetkisi alanina yazilir ve formulun ilk bolumunu olusturur.\nANA IS KOLU (BCDR)\nCaption icinde metin olarak yer alir.\nSadece su degerlerden biri olabilir:\nBURG, FMAL, FMAV, ERIK, CINN, ENPA, GENL\nBulunan deger Ana Is Kolu alanina yazilir ve formulde BCDR bolumunu olusturur.\n\nKARSIT FIRMA (EFG)\nText verisinin üst kısmı (header) analiz edilir.\nEBT GRUP (veya EBT LOJİSTİK vb.) ifadesi içeren satırlar tamamen yok sayılır.\n\nHedef: Belgedeki EBT GRUP dışındaki diğer ana firmanın (Satıcı veya Alıcı) adını bulmaktır.\n\nArama Kuralları:\n1. Satır sınırlaması yoktur, ancak genellikle üst kısımdadır.\n2. Firma ismi metinde Büyük/Küçük harf karışık yazılmış olabilir (Örn: \"Duru Lojistik\"). Ancak çıktı her zaman BÜYÜK HARF olacaktır.\n3. Şu kelimeleri içeren satırlar firma ismi olamaz: \"VERGI\", \"V.D.\", \"NO:\", \"MAHALLESI\", \"SOKAK\", \"CADDE\", \"TEL:\", \"MAIL\", \"FATURA\", \"ADRES\".\n4. Eger \"SAYIN\" kelimesi varsa, hemen yanındaki veya altındaki isim alınır.\n5. Firma ismi bulunduktan sonra sonundaki ticari ekler (STI, SIRKETI, LTD, A.S., INC, TIC, SAN vb.) ve noktalama işaretleri temizlenir.\n6. Kalan ismin İLK İKİ KELİMESİ alınır.\n7. Bu iki kelime boşluksuz birleştirilir ve İNGİLİZCE KARAKTERLERLE BÜYÜK HARFE çevrilir.\n\nÖrnekler:\n- Metin: \"Yılmazlar İnşaat Malz. San. ve Tic. Ltd. Şti.\" -> Çıktı: YILMAZLARINSAAT\n- Metin: \"SAYIN AHMET YILDIZ NAKLİYAT\" -> Çıktı: AHMETYILDIZ\n\nEğer hiçbir şekilde firma ismi tespit edilemezse: BULUNAMADI yazılır.\n\nBu değer Karsit Firma alanına yazılır ve formülde EFG bölümünü oluşturur.\n\nEVRAK YONU (H)\nText alani incelenir.\nOncelik sirasi asagidaki gibidir ve yukaridaki saglanirsa alttakiler dikkate alinmaz:\nEger belgenin en ustunde/basliginda \"EBT GRUP\" yer aliyorsa VE \"ALICI\", \"ALICI FIRMA\" veya \"SAYIN\" ibaresinden sonra EBT GRUP disinda baska bir firma adi geliyorsa (ornek: Vera Ofis vb.), bu belgeyi BIZ KESMISIZDIR ve EVRAK YONU = 2 olur.\nEger EBT GRUP ismi SAYIN veya ALICI kelimesinden hemen sonra ya da bir alt satirda yer aliyorsa, EVRAK YONU = 1 olur.\nEger SAYIN veya ALICI kelimeleri hic yoksa ya da evrak yonu buradan anlasilamiyorsa, FATURA NUMARASI kontrol edilir.\nFatura numarasi EB, BE, EBT veya EBA ile basliyorsa, bu faturayi BIZ KESMISIZDIR ve EVRAK YONU = 2 olur.\nYukaridaki iki kosul da saglanmiyorsa, EVRAK YONU = 1 kabul edilir.\nBu deger Evrak Yonu alanina yazilir ve formulde H bolumunu olusturur.\nEVRAK CINSI (JK)\n01 FATURA: Evrakta Senaryo yazar ve ardindan TICARIFATURA, TEMELFATURA, EARSIVFATURA, FATURA veya IHRACAT kelimelerinden biri bulunur.\n02 PROFORMA: \"arda@ebtgrup.com\" ifadesinden sonra ilk kelime PROFORMA olur.\n03 SIPARIS FORMU:\"arda@ebtgrup.com\" ifadesinden sonra ilk kelime SIPARIS FORMU olur.\n09 CEKI LISTESI: \"arda@ebtgrup.com\" ifadesinden sonra ilk kelime CEKI LISTESI veya PACKING LIST olur.\n10 ITHALAT KLASORU: Klasordur, PDF olamaz.\n11 BEYANNAME: \"T.C. GUMRUK BEYANNAMESI\" ifadesi ve 8 rakam + EX/IM/AN + 8 rakamdan olusan 18 haneli kod bulunur. IM ithalat, AN antrepo, EX ihracat beyannamesidir.\n12 IHRACAT KLASORU: Klasordur, PDF olamaz.\n13 URUN DOSYASI.\n16 INVOICE: \"arda@ebtgrup.com\" ifadesinden sonra ilk kelime INVOICE olur.\n17 POLICE: Ilk satirlardan birinde SIGORTA POLICESI ifadesi bulunur.\n18 BELIRSIZ: Ne oldugu net olmayan evraklar icin kullanilir, Caption bilgisine bakilir.\nBulunan kod Evrak Cinsi alanina yazilir ve formulde JK bolumunu olusturur.\nSENARYO\nSenaryo sadece FATURA (01) evrak cinsinde doldurulur.\nDiger tum evraklarda Senaryo BOS yazilir.\nTARIH (XYZLMN)\nEvrak icinde mutlaka tarih bulunur.\nTARIH:, … TARIHI veya benzeri ifadeler seklinde yer alabilir.\nBirden fazla tarih varsa TARIH: ifadesine en yakin olan tarih kullanilir.\nTarih YYMMDD formatinda 6 haneli yazilir.\nBeyannamelerde tarih GUMRUK MUDURLUGU ifadesinden hemen sonra yer alir.\nBu deger Tarih alanina yazilir ve formulde XYZLMN bolumunu olusturur.\nFORMUL\nTum alanlar birlestirilerek su sekilde yazilir:\nA.BCDR.EFG.H.JK.XYZLMN"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        -2304,
+        5008
+      ],
+      "id": "ad796abb-030f-4758-a566-6f9dd98c46df",
+      "name": "Message a model3",
+      "alwaysOutputData": true,
+      "executeOnce": false,
+      "retryOnFail": true,
+      "credentials": {
+        "googlePalmApi": {
+          "id": "a5Oj26XrO72FzlrI",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "a6c2d614-e1d0-4852-8880-3927aca3f645",
+              "leftValue": "={{ $('Code in JavaScript8').item.json.Formul }}",
+              "rightValue": "={{ $('Code in JavaScript3').item.json.Formul }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        512,
+        3648
+      ],
+      "id": "43d4912f-4768-4948-b5ec-ff2ddb053a95",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  try {\n    // 1. Gemini'nin ürettiği ham metni al (Senin veri yapına göre yol)\n    // Veri yapısı bazen değişebileceği için güvenli erişim (?.) kullanıyoruz\n    const rawText = item.json.content?.parts?.[0]?.text || item.json.text;\n\n    if (!rawText) {\n      throw new Error(\"Metin verisi bulunamadı\");\n    }\n\n    // 2. Markdown temizliği: ```json, ``` ve boşlukları sil\n    // Regex kullanımı: Her türlü markdown işaretini temizler\n    const cleanText = rawText.replace(/```json/g, \"\").replace(/```/g, \"\").trim();\n\n    // 3. String'i gerçek JSON objesine çevir\n    const parsedData = JSON.parse(cleanText);\n\n    // 4. Temiz veriyi n8n formatında geri döndür\n    return { json: parsedData };\n\n  } catch (error) {\n    // Hata durumunda akışı bozma, hata mesajı döndür\n    return {\n      json: {\n        error: \"JSON ayrıştırma hatası\",\n        message: error.message,\n        input: item.json // Hatalı gelen veriyi kontrol edebilmen için\n      }\n    };\n  }\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        64,
+        4576
+      ],
+      "id": "2a33e9b4-2fae-4222-924d-c0fec5fba683",
+      "name": "Code in JavaScript3",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        -736,
+        4656
+      ],
+      "id": "a0cada32-1c5a-416b-a214-4623bf787fd6",
+      "name": "Extract from File",
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-2.5-pro",
+          "mode": "list",
+          "cachedResultName": "models/gemini-2.5-pro"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=GIRDILER\nText: {{ $json.text }}\nCaption: {{ $('Telegram Trigger1').item.json.message.caption }}\nMesaj Id: {{ $('Telegram Trigger1').item.json.message.from.id }}\nBizim Sirketimizin Ismi: EBT GRUP\nCIKTI KURALI\nYorum yapma. Aciklama yazma.\nSadece asagidaki JSON formatinda cikti uret:\n{\n\"Formul\": \"\",\n\"Evrak Cinsi\": \"JK\",\n\"Evrak Yonu\": \"H\",\n\"Paylasim Yetkisi\": \"A\",\n\"Tarih\": \"XYZLMN\",\n\"Karsit Firma\": \"EFG\",\n\"Ana Is Kolu\": \"BCDR\",\n\"Senaryo\": \"\"\n\"Fatura No\":\"\"\n}\nGENEL KURALLAR\nTum degerler BUYUK HARF ve INGILIZCE KARAKTER olmak zorundadir.\n"
+            },
+            {
+              "content": "PAYLASIM YETKISI (A)\nEger Mesaj Id = 8402855302 ise Paylasim Yetkisi her zaman 1’dir ve Caption dikkate alinmaz.\nAksi durumda Paylasim Yetkisi Caption icindeki ilk sayisal bilgidir.\nBu deger Paylasim Yetkisi alanina yazilir ve formulun ilk bolumunu olusturur."
+            },
+            {
+              "content": "ANA IS KOLU (BCDR)\nCaption icinde metin olarak yer alir.\nSadece su degerlerden biri olabilir:\nBURG, FMAL, FMAV, ERIK, CINN, ENPA, GENL\nBulunan deger Ana Is Kolu alanina yazilir ve formulde BCDR bolumunu olusturur."
+            },
+            {
+              "content": "KARSIT FIRMA (EFG)\nText verisinin üst kısmı (header) analiz edilir.\nEBT GRUP (veya EBT LOJİSTİK vb.) ifadesi içeren satırlar tamamen yok sayılır.\n\nHedef: Belgedeki EBT GRUP dışındaki diğer ana firmanın (Satıcı veya Alıcı) adını bulmaktır.\nArama Kuralları:\n1. Satır sınırlaması yoktur, ancak genellikle üst kısımdadır.\n2. Firma ismi metinde Büyük/Küçük harf karışık yazılmış olabilir (Örn: \"Duru Lojistik\"). Ancak çıktı her zaman BÜYÜK HARF olacaktır.\n3. Şu kelimeleri içeren satırlar firma ismi olamaz: \"VERGI\", \"V.D.\", \"NO:\", \"MAHALLESI\", \"SOKAK\", \"CADDE\", \"TEL:\", \"MAIL\", \"FATURA\", \"ADRES\".\n4. Eger \"SAYIN\" kelimesi varsa, hemen yanındaki veya altındaki isim alınır.\n5. Firma ismi bulunduktan sonra sonundaki ticari ekler (STI, SIRKETI, LTD, A.S., INC, TIC, SAN vb.) ve noktalama işaretleri temizlenir.\n6. Kalan ismin İLK İKİ KELİMESİ alınır.\n7. Bu iki kelime boşluksuz birleştirilir ve İNGİLİZCE KARAKTERLERLE BÜYÜK HARFE çevrilir.\nÖrnekler:\n- Metin: \"Yılmazlar İnşaat Malz. San. ve Tic. Ltd. Şti.\" -> Çıktı: YILMAZLARINSAAT\n- Metin: \"SAYIN AHMET YILDIZ NAKLİYAT\" -> Çıktı: AHMETYILDIZ\n- Metin: \"Enpatec GmbH\" -> Çıktı: ENPATECGMBH\n\nEğer hiçbir şekilde firma ismi tespit edilemezse: BULUNAMADI yazılır.\n\nBu değer Karsit Firma alanına yazılır ve formülde EFG bölümünü oluşturur."
+            },
+            {
+              "content": "EVRAK YONU (H)\nText alani incelenir.\nOncelik sirasi asagidaki gibidir ve yukaridaki saglanirsa alttakiler dikkate alinmaz:\nEger evrak metninde \"Gümrük Beyannamesi\", \"Beyanname\" ibareleri geciyorsa veya evrak numarasinda/turunde bagimsiz bir sekilde \"EX\" (İhracat) kodu bulunuyorsa, EVRAK YONU = 2 olur. Eger bagimsiz bir sekilde \"IM\" (İthalat) kodu bulunuyorsa veya banka dekontu ise EVRAK YONU = 1 olur.\nEger belgenin en ustunde/basliginda \"EBT GRUP\" yer aliyorsa VE \"ALICI\", \"ALICI FIRMA\" veya \"SAYIN\" ibaresinden sonra EBT GRUP disinda baska bir firma adi geliyorsa (ornek: Vera Ofis vb.), bu belgeyi BIZ KESMISIZDIR ve EVRAK YONU = 2 olur.\nEger EBT GRUP ismi SAYIN veya ALICI kelimesinden hemen sonra ya da bir alt satirda yer aliyorsa, EVRAK YONU = 1 olur.\nEger SAYIN veya ALICI kelimeleri hic yoksa ya da evrak yonu buradan anlasilamiyorsa, FATURA NUMARASI kontrol edilir.\nFatura numarasi EB, BE, EBT veya EBA ile basliyorsa, bu faturayi BIZ KESMISIZDIR ve EVRAK YONU = 2 olur.\nYukaridaki iki kosul da saglanmiyorsa, EVRAK YONU = 1 kabul edilir.\nBu deger Evrak Yonu alanina yazilir ve formulde H bolumunu olusturur."
+            },
+            {
+              "content": "EVRAK CINSI (JK)\n01 FATURA: Evrakta Senaryo yazar ve ardindan TICARIFATURA, TEMELFATURA, EARSIVFATURA, FATURA veya IHRACAT kelimelerinden biri bulunur.\n02 PROFORMA: \"arda@ebtgrup.com\" ifadesinden sonra ilk kelime PROFORMA olur.\n03 SIPARIS FORMU:\"arda@ebtgrup.com\" ifadesinden sonra ilk kelime SIPARIS FORMU olur.\n09 CEKI LISTESI: \"arda@ebtgrup.com\" ifadesinden sonra ilk kelime CEKI LISTESI veya PACKING LIST olur.\n10 ITHALAT KLASORU: Klasordur, PDF olamaz.\n11 BEYANNAME: \"T.C. GUMRUK BEYANNAMESI\" ifadesi ve 8 rakam + EX/IM/AN + 8 rakamdan olusan 18 haneli kod bulunur. IM ithalat, AN antrepo, EX ihracat beyannamesidir.\n12 IHRACAT KLASORU: Klasordur, PDF olamaz.\n13 URUN DOSYASI.\n14 DEKONT: Belgede \"Dekont\", \"Makbuz\", \"Havale\", \"EFT\", \"Hesap Özeti\", \n\"İşlem Tarihi\", \"Gönderen Hesap\", \"Alıcı Hesap\", \"Şube Kodu\" gibi banka \nişlem ifadelerinden en az biri geçiyorsa VE \"TICARIFATURA\", \"TEMELFATURA\", \n\"EARSIVFATURA\", \"FATURA\" kelimeleri YOKSA bu kod kullanılır.\n16 INVOICE: \"arda@ebtgrup.com\" ifadesinden sonra ilk kelime INVOICE olur.\n17 POLICE: Ilk satirlardan birinde SIGORTA POLICESI ifadesi bulunur.\n18 BELIRSIZ: Ne oldugu net olmayan evraklar icin kullanilir, Caption bilgisine bakilir.\nBulunan kod Evrak Cinsi alanina yazilir ve formulde JK bolumunu olusturur."
+            },
+            {
+              "content": "SENARYO\nSenaryo sadece FATURA (01) evrak cinsinde doldurulur.\nDiger tum evraklarda Senaryo BOS yazilir."
+            },
+            {},
+            {
+              "content": "TARIH (XYZLMN)\nEvrak icinde mutlaka tarih bulunur.\nTARIH:, … TARIHI veya benzeri ifadeler seklinde yer alabilir.\nBirden fazla tarih varsa TARIH: ifadesine en yakin olan tarih kullanilir.\nTarih YYMMDD formatinda 6 haneli yazilir.\nBeyannamelerde tarih GUMRUK MUDURLUGU ifadesinden hemen sonra yer alir.\nBu deger Tarih alanina yazilir ve formulde XYZLMN bolumunu olusturur."
+            },
+            {
+              "content": "FORMUL\nTum alanlar birlestirilerek su sekilde yazilir:\nA.BCDR.EFG.H.JK.XYZLMN\n"
+            }
+          ]
+        },
+        "builtInTools": {},
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1.1,
+      "position": [
+        -288,
+        4576
+      ],
+      "id": "a789d011-c91b-4b41-b46b-8ce4e8db1344",
+      "name": "Message a model",
+      "alwaysOutputData": true,
+      "retryOnFail": true,
+      "credentials": {
+        "googlePalmApi": {
+          "id": "a5Oj26XrO72FzlrI",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1wZZ3atyuE52SoEeKrGhZxSwYUexi1h62",
+          "mode": "list",
+          "cachedResultName": "Sipariş Formları",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1wZZ3atyuE52SoEeKrGhZxSwYUexi1h62"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        384
+      ],
+      "id": "0becb243-7cdd-4bab-ba8a-33a158c26a4b",
+      "name": "Upload file18",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "283a9899-1ab6-494f-aba7-c39df98f09f1",
+              "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+              "rightValue": "01",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "38e39acf-c9c0-4d97-a2b4-a78be0b665c2",
+              "leftValue": "={{ $('If').item.json['Evrak Cinsi'] }}",
+              "rightValue": "14",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "looseTypeValidation": "={{ false }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        2304,
+        3760
+      ],
+      "id": "a93a2f63-b0a1-40bf-a981-72a822f8b251",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "IET9JwaadUZ2GJLt",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/IET9JwaadUZ2GJLt",
+          "cachedResultName": "EBT — efatura"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.3,
+      "position": [
+        2736,
+        3760
+      ],
+      "id": "055a8f7a-cc65-48a5-8e63-8a452f88e191",
+      "name": "Call 'efatura'"
+    },
+    {
+      "parameters": {
+        "mode": "raw",
+        "jsonOutput": "={\n  \"Numara\": \"1\"",
+        "includeOtherFields": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        736,
+        3760
+      ],
+      "id": "c8bd6cc5-bb9e-42ab-8fb8-b4a12b557325",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "={{ $json.Formul }}",
+        "filter": {},
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        960,
+        3760
+      ],
+      "id": "d4e13dde-2bff-4d13-b3dc-f9fd1a7a79a4",
+      "name": "Search files and folders2",
+      "alwaysOutputData": true,
+      "executeOnce": false,
+      "notesInFlow": false,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const baseFormula = $('Edit Fields1').first().json.Formul;\n\n// Search node'dan gelen tüm dosyalar\nconst items = $input.all();\n\nfunction escapeRegex(str) {\n  return str.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&');\n}\n\n// Sadece şu formata uyanları kabul et:\n// baseFormula.1\n// baseFormula.2\n// baseFormula.15\nconst regex = new RegExp(`^${escapeRegex(baseFormula)}\\\\.(\\\\d+)$`);\n\nlet maxVersion = 0;\n\nfor (const item of items) {\n  const fileName =\n    item.json.name ||\n    item.json.title ||\n    item.json.fileName ||\n    '';\n\n  const match = fileName.match(regex);\n\n  if (match) {\n    const version = Number(match[1]);\n\n    if (!Number.isNaN(version) && version > maxVersion) {\n      maxVersion = version;\n    }\n  }\n}\n\nconst nextVersion = maxVersion + 1;\nconst finalFileName = `${baseFormula}.${nextVersion}`;\n\nreturn [\n  {\n    json: {\n      baseFormula,\n      numara: nextVersion,\n      finalFileName,\n      anaIsKolu: $('Edit Fields1').first().json.anaIsKolu\n    },\n  },\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1184,
+        3760
+      ],
+      "id": "1dbb3e8f-3c28-49eb-9486-a784f2ab7344",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "name": "={{ $('Code in JavaScript1').item.json.finalFileName }}",
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1v8NtTrUJywXNX-NABR6kGk480OW3ljys",
+          "mode": "list",
+          "cachedResultName": "Özel Gelen Teklif",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1v8NtTrUJywXNX-NABR6kGk480OW3ljys"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3648,
+        960
+      ],
+      "id": "3bc06138-e17e-43bc-97fd-ef821f94f28e",
+      "name": "Upload file8",
+      "retryOnFail": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      },
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "11e4779a-7b3c-416f-bfcf-9fa1edb06636",
+              "leftValue": "={{ $json.ss }}",
+              "rightValue": "Port Dolu",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -1856,
+        3376
+      ],
+      "id": "b9a7335a-3a46-4f0e-b550-1b31532f992c",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "dataTableId": {
+          "__rl": true,
+          "value": "go1t10pbRLRWlvEa",
+          "mode": "list",
+          "cachedResultName": "Kontrol Verisi",
+          "cachedResultUrl": "/projects/MQLZkuZR79pgXy4e/datatables/go1t10pbRLRWlvEa"
+        }
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -2080,
+        3440
+      ],
+      "id": "eb0ef43f-533e-47ac-9b1c-b8ecaaa2134f",
+      "name": "Get row(s)"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "go1t10pbRLRWlvEa",
+          "mode": "list",
+          "cachedResultName": "Kontrol Verisi",
+          "cachedResultUrl": "/projects/MQLZkuZR79pgXy4e/datatables/go1t10pbRLRWlvEa"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ss": "Port Boş"
+          },
+          "matchingColumns": [
+            "ss"
+          ],
+          "schema": [
+            {
+              "id": "ss",
+              "displayName": "ss",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        736,
+        3568
+      ],
+      "id": "890d952d-c813-4531-b0ca-4c1c100552b8",
+      "name": "Update row(s)"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "go1t10pbRLRWlvEa",
+          "mode": "list",
+          "cachedResultName": "Kontrol Verisi",
+          "cachedResultUrl": "/projects/MQLZkuZR79pgXy4e/datatables/go1t10pbRLRWlvEa"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ss": "Port Dolu"
+          },
+          "matchingColumns": [
+            "ss"
+          ],
+          "schema": [
+            {
+              "id": "ss",
+              "displayName": "ss",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -1632,
+        3632
+      ],
+      "id": "d9b43642-e153-4e24-b58f-1541e59dcf83",
+      "name": "Update row(s)1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "go1t10pbRLRWlvEa",
+          "mode": "list",
+          "cachedResultName": "Kontrol Verisi",
+          "cachedResultUrl": "/projects/MQLZkuZR79pgXy4e/datatables/go1t10pbRLRWlvEa"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ss": "Port Boş"
+          },
+          "matchingColumns": [
+            "ss"
+          ],
+          "schema": [
+            {
+              "id": "ss",
+              "displayName": "ss",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        4304,
+        1056
+      ],
+      "id": "22012a5f-cd66-472a-bcbf-d14a1de6ad75",
+      "name": "Update row(s)2"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "go1t10pbRLRWlvEa",
+          "mode": "list",
+          "cachedResultName": "Kontrol Verisi",
+          "cachedResultUrl": "/projects/MQLZkuZR79pgXy4e/datatables/go1t10pbRLRWlvEa"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ss": "Port Boş"
+          },
+          "matchingColumns": [
+            "ss"
+          ],
+          "schema": [
+            {
+              "id": "ss",
+              "displayName": "ss",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        4304,
+        1344
+      ],
+      "id": "a62aedbd-16ea-4f2f-95f4-a5c91833bf69",
+      "name": "Update row(s)3"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -1408,
+        3712
+      ],
+      "id": "2d174142-fe92-4b55-8bc9-f82cc8adbfa0",
+      "name": "Merge6"
+    },
+    {
+      "parameters": {
+        "amount": 15
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -1632,
+        3440
+      ],
+      "id": "0e9e1d07-c8f7-4101-8611-06587dd67f5d",
+      "name": "Wait",
+      "webhookId": "11819a9d-fbd5-45f1-92dc-916ee9adb453"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "a1c31836-62e3-4e85-a294-2eeee1795b26",
+              "leftValue": "={{ $('If').item.json.Senaryo }}",
+              "rightValue": "IHRACAT",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "d430d0fe-9964-4998-837e-3262170d2225",
+              "leftValue": "={{ $('If').item.json['Fatura No'] }}",
+              "rightValue": "EBT",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        2528,
+        2064
+      ],
+      "id": "6166b43a-114e-493b-a0bb-d06054fdb991",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "310f7e56-d232-434e-8f7f-253e364d70f0",
+              "leftValue": "={{ $json.error }}",
+              "rightValue": "File not found",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -512,
+        4624
+      ],
+      "id": "8edf3f8f-2110-45a7-b121-d8f0f9db0446",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "21791e1a-de0a-4174-94e4-e1a3590f9c30",
+              "leftValue": "={{ $json.text }}",
+              "rightValue": "File not found",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -512,
+        3648
+      ],
+      "id": "3fed5d38-5508-4a29-a438-a9904840336f",
+      "name": "If5"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -224,
+        4784
+      ],
+      "id": "8a0bd42b-994c-4c06-96ff-40c35a09af5a",
+      "name": "Wait1",
+      "webhookId": "045c2d4c-8673-414f-b763-e0dd72f852ab"
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -960,
+        4656
+      ],
+      "id": "b9858f3c-58da-4e33-b51a-868013ed0784",
+      "name": "Get a file",
+      "webhookId": "197d126d-50cd-4467-9eb5-f0d3d24fa2fb",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -960,
+        3648
+      ],
+      "id": "d32246af-f110-41c4-a466-4769791f02d0",
+      "name": "Get a file1",
+      "webhookId": "cebf30e0-381c-4acb-872f-4401f6f8286e",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3424,
+        -624
+      ],
+      "id": "13fe425e-4811-4a8a-a93d-1c3cc3e939a6",
+      "name": "Get a file2",
+      "webhookId": "793ac6ca-690b-4fe0-818d-b3c70161fb42",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3424,
+        576
+      ],
+      "id": "5263cf9b-8d0a-49b1-ac9e-e367fff99de3",
+      "name": "Get a file3",
+      "webhookId": "b895faa5-8d6d-4c73-b8df-16c7bbb4ce89",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3424,
+        1152
+      ],
+      "id": "95c662b1-b4ec-4bf5-9957-138e4c608e88",
+      "name": "Get a file4",
+      "webhookId": "dc1ac750-2118-429f-af7d-b7d7f0398804",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2304,
+        2064
+      ],
+      "id": "960d4eff-0ddc-4fbf-9824-17c98e1a50be",
+      "name": "Get a file5",
+      "webhookId": "4db4522c-1208-481d-a402-16546e8174e6",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2528,
+        3552
+      ],
+      "id": "d95eb83f-9d62-453b-9707-549f076b23ad",
+      "name": "Get a file6",
+      "webhookId": "311ad0b7-086e-4c1e-98f8-887acaf56b26",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2528,
+        3360
+      ],
+      "id": "5db12392-0040-47cb-b061-50ff9a80b21d",
+      "name": "Get a file7",
+      "webhookId": "00731ad5-8740-49ac-ae5d-b8fe7d630a44",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2528,
+        3168
+      ],
+      "id": "25ddacc6-ca4e-4b88-800b-2184df9e2900",
+      "name": "Get a file8",
+      "webhookId": "36e8412d-daf2-40bb-9dab-b042df3d9e36",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3424,
+        3120
+      ],
+      "id": "0a0e39ed-b1ea-4c3c-bab2-3808f2bc7356",
+      "name": "Get a file9",
+      "webhookId": "2088995e-a4cd-4e37-9be8-622051a310cb",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3424,
+        2928
+      ],
+      "id": "b24d74b8-0ff5-4b57-87a5-b86bc346b7b4",
+      "name": "Get a file10",
+      "webhookId": "cf32fdc0-5999-4b9d-9ecd-434df32798b3",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3184,
+        3904
+      ],
+      "id": "ab201857-c3ca-457b-89c4-52b72f2301a8",
+      "name": "Get a file11",
+      "webhookId": "e160311e-c3c4-4223-aecf-ed9166967f5e",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3200,
+        4240
+      ],
+      "id": "af843f42-8640-444d-9b94-db9884bd596b",
+      "name": "Get a file12",
+      "webhookId": "737aabf9-c74c-4085-bfcf-c10850fe35df",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3200,
+        4432
+      ],
+      "id": "cdc7963b-c02d-4ef4-885d-f19a8ed7424e",
+      "name": "Get a file13",
+      "webhookId": "527517b4-5a4b-420e-ad7f-1f0bf39ccc04",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2976,
+        4096
+      ],
+      "id": "f1d1d433-b6f2-4001-b862-6240a1152023",
+      "name": "Get a file14",
+      "webhookId": "ef727bee-8b4c-42fb-8279-168f1b808f25",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3424,
+        -384
+      ],
+      "id": "5b0811f1-a30c-430d-8408-fc459141ca97",
+      "name": "Get a file15",
+      "webhookId": "dd457f3b-fb7f-448c-b4d5-cda8327d5ad3",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3424,
+        -192
+      ],
+      "id": "8dcf2959-049d-48a4-a0b5-d5bda9cf7fa9",
+      "name": "Get a file16",
+      "webhookId": "be9ef43c-93b2-4f62-a9ae-a49732f0839a",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3424,
+        384
+      ],
+      "id": "dfeb7c08-306a-49e0-80c0-4dc69c00c818",
+      "name": "Get a file17",
+      "webhookId": "3fe8b683-da57-4f82-aac6-0a07f806ba49",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3424,
+        0
+      ],
+      "id": "56e1fecb-6f90-412f-a6c4-4ba7576f0e0b",
+      "name": "Get a file18",
+      "webhookId": "4b4f12e8-554d-4624-85c7-16d66396f837",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3424,
+        192
+      ],
+      "id": "bef7286b-7b71-406d-8f20-a0373f98c805",
+      "name": "Get a file19",
+      "webhookId": "4404f755-47ca-4820-a5d9-aa4ad75ed92a",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3424,
+        768
+      ],
+      "id": "c1621d6f-54b0-4398-8385-8c4d833cb191",
+      "name": "Get a file20",
+      "webhookId": "7cbaf4c4-2261-4d11-b945-2637f89d2c8d",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3424,
+        960
+      ],
+      "id": "25ddb83f-a90f-453f-ba01-a6a9d464b0e5",
+      "name": "Get a file21",
+      "webhookId": "78940ea5-a80a-4ed6-9b4d-e00a7473553e",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        3424,
+        1728
+      ],
+      "id": "d2eb0fb8-c0cb-4515-85ab-15510c101f04",
+      "name": "Get a file22",
+      "webhookId": "55744597-2eb2-4141-bc0a-85fb53881b11",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger1').item.json.message.document.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2528,
+        1392
+      ],
+      "id": "390e8454-953b-4223-ada4-7fbf3cede70a",
+      "name": "Get a file23",
+      "webhookId": "6ff3791a-fe2f-491e-b494-0320bbf65747",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "034f8b6c-bb8a-47ac-8452-0301f046fcd8",
+              "name": "Formul",
+              "value": "={{ $('If').item.json.Formul }}",
+              "type": "string"
+            },
+            {
+              "id": "cc642a09-0f09-4db6-a343-20bb07f6ac1f",
+              "name": "Evrak Cinsi",
+              "value": "={{ $('If').item.json['Evrak Cinsi'] }}",
+              "type": "string"
+            },
+            {
+              "id": "fa8b0564-9b8a-4e77-a43d-7c033856cce1",
+              "name": "Evrak Yonu",
+              "value": "={{ $('If').item.json['Evrak Yonu'] }}",
+              "type": "string"
+            },
+            {
+              "id": "708c694c-6f0e-4851-9dde-96466bbea469",
+              "name": "Paylasim Yetkisi",
+              "value": "={{ $('If').item.json['Paylasim Yetkisi'] }}",
+              "type": "string"
+            },
+            {
+              "id": "b2ab80df-872b-448e-90c8-9df4b2fec7d9",
+              "name": "Tarih",
+              "value": "={{ $('If').item.json.Tarih }}",
+              "type": "string"
+            },
+            {
+              "id": "ecc9af6e-aaa9-4947-96dc-6acc2d2f52e5",
+              "name": "Karsit Firma",
+              "value": "={{ $('If').item.json['Karsit Firma'] }}",
+              "type": "string"
+            },
+            {
+              "id": "0f28abb2-01ee-43e7-86df-31c03b98c6ea",
+              "name": "Ana Is Kolu",
+              "value": "={{ $('If').item.json['Ana Is Kolu'] }}",
+              "type": "string"
+            },
+            {
+              "id": "e6c4991a-bf80-4217-89b0-56a9b4e3640f",
+              "name": "Senaryo",
+              "value": "={{ $('If').item.json.Senaryo }}",
+              "type": "string"
+            },
+            {
+              "id": "39139c54-d42f-4f77-821a-385431f2b652",
+              "name": "Fatura No",
+              "value": "={{ $('If').item.json['Fatura No'] }}",
+              "type": "string"
+            },
+            {
+              "id": "82894dda-572f-4ee4-871b-c81760311729",
+              "name": "message.content.fatura_kesilen.adi",
+              "value": "={{ $json.message.content.fatura_kesilen.adi }}",
+              "type": "string"
+            },
+            {
+              "id": "91cb1d15-606f-46dd-a950-21e5bc084a6e",
+              "name": "message.content.urunler",
+              "value": "={{ $json.message.content.urunler }}",
+              "type": "array"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        4928,
+        2688
+      ],
+      "id": "1344aeb3-fa43-4a5b-a190-39e8cef6c8ca",
+      "name": "Edit Fields",
+      "executeOnce": false
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        4704,
+        2688
+      ],
+      "id": "62c5484f-d319-4dd7-b56e-0a086100539a",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "operation": "copy",
+        "fileId": {
+          "__rl": true,
+          "value": "1oM2RfSQ8Awf3Xs5hSTOUyPse7FkhOai02w-HGmQKxOg",
+          "mode": "list",
+          "cachedResultName": "Invoice_sablon",
+          "cachedResultUrl": "https://docs.google.com/document/d/1oM2RfSQ8Awf3Xs5hSTOUyPse7FkhOai02w-HGmQKxOg/edit?usp=drivesdk"
+        },
+        "name": "={{ $('When Executed by Another Workflow').item.json['Paylasim Yetkisi'] }}.{{ $('When Executed by Another Workflow').item.json['Ana Is Kolu'] }}.{{ $('When Executed by Another Workflow').item.json['Karsit Firma'] }}.{{ $('When Executed by Another Workflow').item.json['Evrak Yonu'] }}.16.{{ $('When Executed by Another Workflow').item.json.Tarih }}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        5152,
+        2688
+      ],
+      "id": "052890f7-66ae-45b6-9e88-673493ff2022",
+      "name": "Copy file1",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ $('Copy file1').first().json.id }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "action": "replaceAll",
+              "text": "=[Ürün{{$itemIndex}}]",
+              "replaceText": "={{ $json[\"Ürün Adı\"] }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "=[Adet{{$itemIndex}}]",
+              "replaceText": "={{ $json.Miktar }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "=[AdetFiyatı{{$itemIndex}}]",
+              "replaceText": "={{ $json[\"Birim Fiyat\"] }}"
+            },
+            {
+              "action": "replaceAll",
+              "text": "=[Toplam{{$itemIndex}}]",
+              "replaceText": "={{ \nNumber(String($json.Miktar).replace(',', '.')) * \nNumber(String($json['Birim Fiyat']).replace(',', '.')) \n}}{{ $json['Döviz Birimi'] }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        6048,
+        2640
+      ],
+      "id": "82c25272-9353-4091-bea3-c4727c64bb82",
+      "name": "Update a document1",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "mfo4taQoqLSLGMwf",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentURL": "={{ $('Copy file1').item.json.id }}",
+        "actionsUi": {
+          "actionFields": [
+            {
+              "object": "tableRow",
+              "action": "delete",
+              "index": 13,
+              "rowIndex": "={{ $('When Executed by Another Workflow').item.json.message.content.urunler.length+1 }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDocs",
+      "typeVersion": 2,
+      "position": [
+        5824,
+        2832
+      ],
+      "id": "7e6d6a94-f31e-4dfe-9e7e-a82fbdc70413",
+      "name": "Update a document2",
+      "credentials": {
+        "googleDocsOAuth2Api": {
+          "id": "mfo4taQoqLSLGMwf",
+          "name": "Google Docs account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "batchSize": "=1",
+        "options": {
+          "reset": false
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        5600,
+        2736
+      ],
+      "id": "d849a5af-577b-45b0-b874-868fbd999499",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "jsCode": "const input = $('When Executed by Another Workflow').first().json;\n\nconst urunler = input.message.content.urunler;\n\nreturn urunler.map(urun => ({\n  json: {\n    Formul: input.Formul,\n    \"Evrak Cinsi\": input[\"Evrak Cinsi\"],\n    \"Evrak Yonu\": input[\"Evrak Yonu\"],\n    \"Paylasim Yetkisi\": input[\"Paylasim Yetkisi\"],\n    Tarih: input.Tarih,\n    \"Karsit Firma\": input[\"Karsit Firma\"],\n    \"Ana Is Kolu\": input[\"Ana Is Kolu\"],\n    Senaryo: input.Senaryo,\n    \"Fatura No\": input[\"Fatura No\"],\n\n    \"Fatura Kesilen\": input.message.content.fatura_kesilen.adi,\n\n    \"Ürün Adı\": urun.adi,\n    Miktar: urun.miktar,\n    \"Birim Fiyat\": urun.birim_fiyat,\n    \"KDV Miktarı\": urun.kdv_miktari,\n    \"Ödenecek Tutar\": urun.odenecek_tutar,\n    \"Kur Çarpanı\": urun.kur_carpani,\n    \"Döviz Birimi\": urun.doviz_birimi\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5824,
+        2640
+      ],
+      "id": "4ee506c9-4b3e-4959-950e-e6ce1a1406ea",
+      "name": "Code in JavaScript2",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "jsCode": "const urunler = $items(\"When Executed by Another Workflow\")[0]\n  .json.message.content.urunler;\n\nconst count = 7 - urunler.length;\n\nreturn Array.from({ length: count }, (_, i) => ({\n  json: {\n    counter: i + 1\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        5376,
+        2736
+      ],
+      "id": "f135b4ee-c094-4bc6-aee0-4bbc3805d907",
+      "name": "Code in JavaScript4"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "claude-opus-4-6",
+          "mode": "list",
+          "cachedResultName": "claude-opus-4-6"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=GIRDILER\nText: {{ $json.text }}\nCaption: {{ $('Telegram Trigger1').item.json.message.caption }}\nMesaj Id: {{ $('Telegram Trigger1').item.json.message.from.id }}\nBizim Sirketimizin Ismi: EBT GRUP\nCIKTI KURALI\nYorum yapma. Aciklama yazma.\nSadece asagidaki JSON formatinda cikti uret:\n{\n\"Formul\": \"\",\n\"Evrak Cinsi\": \"JK\",\n\"Evrak Yonu\": \"H\",\n\"Paylasim Yetkisi\": \"A\",\n\"Tarih\": \"XYZLMN\",\n\"Karsit Firma\": \"EFG\",\n\"Ana Is Kolu\": \"BCDR\",\n\"Senaryo\": \"\"\n\"Fatura No\":\"\"\n}\nGENEL KURALLAR\nTum degerler BUYUK HARF ve INGILIZCE KARAKTER olmak zorundadir.\n"
+            },
+            {
+              "content": "PAYLASIM YETKISI (A)\nEger Mesaj Id = 8402855302 ise Paylasim Yetkisi her zaman 1’dir ve Caption dikkate alinmaz.\nAksi durumda Paylasim Yetkisi Caption icindeki ilk sayisal bilgidir.\nBu deger Paylasim Yetkisi alanina yazilir ve formulun ilk bolumunu olusturur."
+            },
+            {
+              "content": "ANA IS KOLU (BCDR)\nCaption icinde metin olarak yer alir.\nSadece su degerlerden biri olabilir:\nBURG, FMAL, FMAV, ERIK, CINN, ENPA, GENL\nBulunan deger Ana Is Kolu alanina yazilir ve formulde BCDR bolumunu olusturur."
+            },
+            {
+              "content": "KARSIT FIRMA (EFG)\nText verisinin tamamı analiz edilir (üst kısım/antet öncelikli, ama SAYIN/ALICI satırları da dahil tüm belge taranır).\n\nADIM 1 — KENDİ ŞİRKETİMİZİ TANI:\nAşağıdaki ifadelerden herhangi biri geçen her satır \"BİZİM ŞİRKETİMİZ\" olarak işaretlenir ve firma ismi adayı olarak ASLA kullanılmaz:\nEBT, EBT GRUP, EBTGRUP, EBT GRUP DIŞ TİCARET, EBT DIŞ TİCARET, EBT LOJİSTİK, \nEBT GRUP DIŞ TİCARET SANAYİ LİMİTED ŞİRKETİ\n(Büyük/küçük harf, nokta, kısaltma farklarını göz ardı et — \"Ebt Grup\", \"E.B.T. GRUP\" gibi varyasyonlar da dahildir.)\n\nADIM 2 — KARŞI TARAFI BUL:\nHedef: Belgedeki EBT dışındaki diğer ana firmanın (Satıcı veya Alıcı, hangisi EBT değilse) adını bulmaktır.\n\nÖNCELİK SIRASI (yukarıdan aşağıya, ilk uyan kullanılır):\n1. Eğer \"SAYIN\" veya \"ALICI\" ifadesinden sonra gelen isim EBT ise (yani BİZ alıcıyız), \n   o satırı tamamen atla ve KARŞI TARAFI belgenin üst kısmındaki/antetindeki \n   FATURAYI KESEN firma adında ara (genellikle sayfanın en üstünde, logo/unvan bölümünde).\n2. Eğer \"SAYIN\" veya \"ALICI\" ifadesinden sonra gelen isim EBT DEĞİLSE, karşı taraf odur — \n   o ismi kullan (BİZ faturayı kesen tarafız).\n3. \"SAYIN\"/\"ALICI\" hiç yoksa, belgenin üst kısmındaki firma adını kullan.\n\nArama Kuralları (isim bulunduktan sonra uygulanır):\n- Şu kelimeleri içeren satırlar firma ismi olamaz: \"VERGI\", \"V.D.\", \"NO:\", \"MAHALLESI\", \"SOKAK\", \"CADDE\", \"TEL:\", \"MAIL\", \"FATURA\", \"ADRES\".\n- Firma ismi bulunduktan sonra sonundaki ticari ekler (STI, SIRKETI, LTD, A.S., INC, TIC, SAN vb.) ve noktalama işaretleri temizlenir.\n- Kalan ismin İLK İKİ KELİMESİ alınır.\n- Bu iki kelime boşluksuz birleştirilir ve İNGİLİZCE KARAKTERLERLE BÜYÜK HARFE çevrilir.\n\nÖrnekler:\n- Metin: \"Yılmazlar İnşaat Malz. San. ve Tic. Ltd. Şti.\" -> Çıktı: YILMAZLARINSAAT\n- Metin üst kısmı: \"Duru Lojistik A.Ş.\" + alt kısımda \"SAYIN EBT GRUP DIŞ TİCARET...\" \n  -> SAYIN satırı EBT olduğu için atlanır, üst kısımdaki \"Duru Lojistik\" kullanılır -> Çıktı: DURULOJISTIK\n- Metin: \"SAYIN AHMET YILDIZ NAKLİYAT\" (EBT değil) -> Çıktı: AHMETYILDIZ\n- Metin: \"HAB OTEL VE TURİZM\" -> Çıktı: HABOTEL\n\nEğer hiçbir şekilde EBT dışında bir firma ismi tespit edilemezse: BULUNAMADI yazılır.\nBu değer Karsit Firma alanına yazılır ve formülde EFG bölümünü oluşturur."
+            },
+            {
+              "content": "EVRAK YONU (H)\nText alani incelenir.\nOncelik sirasi asagidaki gibidir ve yukaridaki saglanirsa alttakiler dikkate alinmaz:\nEger evrak metninde \"Gümrük Beyannamesi\", \"Beyanname\" ibareleri geciyorsa veya evrak numarasinda/turunde bagimsiz bir sekilde \"EX\" (İhracat) kodu bulunuyorsa, EVRAK YONU = 2 olur. Eger bagimsiz bir sekilde \"IM\" (İthalat) kodu bulunuyorsa veya banka dekontu ise EVRAK YONU = 1 olur.\nEger belgenin en ustunde/basliginda \"EBT GRUP\" yer aliyorsa VE \"ALICI\", \"ALICI FIRMA\" veya \"SAYIN\" ibaresinden sonra EBT GRUP disinda baska bir firma adi geliyorsa (ornek: Vera Ofis vb.), bu belgeyi BIZ KESMISIZDIR ve EVRAK YONU = 2 olur.\nEger EBT GRUP ismi SAYIN veya ALICI kelimesinden hemen sonra ya da bir alt satirda yer aliyorsa, EVRAK YONU = 1 olur.\nEger SAYIN veya ALICI kelimeleri hic yoksa ya da evrak yonu buradan anlasilamiyorsa, FATURA NUMARASI kontrol edilir.\nFatura numarasi EB, BE, EBT veya EBA ile basliyorsa, bu faturayi BIZ KESMISIZDIR ve EVRAK YONU = 2 olur.\nYukaridaki iki kosul da saglanmiyorsa, EVRAK YONU = 1 kabul edilir.\nBu deger Evrak Yonu alanina yazilir ve formulde H bolumunu olusturur."
+            },
+            {
+              "content": "EVRAK CINSI (JK)\n01 FATURA: Evrakta Senaryo yazar ve ardindan TICARIFATURA, TEMELFATURA, EARSIVFATURA, FATURA veya IHRACAT kelimelerinden biri bulunur.\n02 PROFORMA: \"arda@ebtgrup.com\" ifadesinden sonra ilk kelime PROFORMA olur.\n03 SIPARIS FORMU:\"arda@ebtgrup.com\" ifadesinden sonra ilk kelime SIPARIS FORMU olur.\n09 CEKI LISTESI: \"arda@ebtgrup.com\" ifadesinden sonra ilk kelime CEKI LISTESI veya PACKING LIST olur.\n10 ITHALAT KLASORU: Klasordur, PDF olamaz.\n11 BEYANNAME: \"T.C. GUMRUK BEYANNAMESI\" ifadesi ve 8 rakam + EX/IM/AN + 8 rakamdan olusan 18 haneli kod bulunur. IM ithalat, AN antrepo, EX ihracat beyannamesidir.\n12 IHRACAT KLASORU: Klasordur, PDF olamaz.\n13 URUN DOSYASI.\n14 DEKONT: Belgede \"Dekont\", \"Makbuz\", \"Havale\", \"EFT\", \"Hesap Özeti\", \n\"İşlem Tarihi\", \"Gönderen Hesap\", \"Alıcı Hesap\", \"Şube Kodu\" gibi banka \nişlem ifadelerinden en az biri geçiyorsa VE \"TICARIFATURA\", \"TEMELFATURA\", \n\"EARSIVFATURA\", \"FATURA\" kelimeleri YOKSA bu kod kullanılır.\n16 INVOICE: \"arda@ebtgrup.com\" ifadesinden sonra ilk kelime INVOICE olur.\n17 POLICE: Ilk satirlardan birinde SIGORTA POLICESI ifadesi bulunur.\n18 BELIRSIZ: Ne oldugu net olmayan evraklar icin kullanilir, Caption bilgisine bakilir.\nBulunan kod Evrak Cinsi alanina yazilir ve formulde JK bolumunu olusturur."
+            },
+            {
+              "content": "SENARYO\nSenaryo sadece FATURA (01) evrak cinsinde doldurulur.\nDiger tum evraklarda Senaryo BOS yazilir."
+            },
+            {
+              "content": "TARIH (XYZLMN)\nEvrak icinde mutlaka tarih bulunur.\nTARIH:, … TARIHI veya benzeri ifadeler seklinde yer alabilir.\nBirden fazla tarih varsa TARIH: ifadesine en yakin olan tarih kullanilir.\nTarih YYMMDD formatinda 6 haneli yazilir.\nBeyannamelerde tarih GUMRUK MUDURLUGU ifadesinden hemen sonra yer alir.\nBu deger Tarih alanina yazilir ve formulde XYZLMN bolumunu olusturur."
+            },
+            {
+              "content": "FORMUL\nTum alanlar birlestirilerek su sekilde yazilir:\nA.BCDR.EFG.H.JK.XYZLMN"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.anthropic",
+      "typeVersion": 1,
+      "position": [
+        -1072,
+        3264
+      ],
+      "id": "d7f59517-5aa0-4c68-85b4-36df36957e98",
+      "name": "Message a model1",
+      "credentials": {
+        "anthropicApi": {
+          "id": "GSgB2w16WLmZIdOC",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        288,
+        3648
+      ],
+      "id": "4943f345-dd64-47cb-8785-0809c9b49b11",
+      "name": "Merge7",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "claude-sonnet-4-6",
+          "mode": "list",
+          "cachedResultName": "claude-sonnet-4-6"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=Aşağıdaki mesajı analiz et. Kullanıcı bir faturanın iptal edildiğini bildiriyor mu?\nSadece JSON döndür, açıklama ekleme, ``` kullanma.\n\n{\n  \"iptal\": true/false,\n  \"fatura_no_parcasi\": \"...\"\n}\n\nKurallar:\n- \"iptal\", \"iptal oldu\", \"iptal edildi\", \"geçersiz\" gibi ifadeler varsa true.\n- fatura_no_parcasi: mesajda geçen numara/kod ne ise onu yaz (örn. \"51\", \"EBT...051\"). Tam fatura numarası olmasa bile mesajda geçen rakamsal/harfsel parçayı yaz.\n\nMesaj: {{ $json.message.text }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.anthropic",
+      "typeVersion": 1,
+      "position": [
+        -880,
+        3904
+      ],
+      "id": "c51ea048-44f8-4f04-a962-93d525496671",
+      "name": "Message a model4",
+      "credentials": {
+        "anthropicApi": {
+          "id": "GSgB2w16WLmZIdOC",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const raw = items[0].json.content[0].text;\n\nlet clean = raw.replace(/```json\\s*/gi, '').replace(/```/g, '').trim();\n\nconst first = clean.indexOf('{');\nconst last = clean.lastIndexOf('}');\nif (first !== -1 && last !== -1) {\n  clean = clean.substring(first, last + 1);\n}\n\nlet parsed;\ntry {\n  parsed = JSON.parse(clean);\n} catch (err) {\n  throw new Error(\"İptal parse hatası: \" + err.message + \"\\nHam çıktı:\\n\" + clean);\n}\n\n// iptal alanını gerçek boolean'a çevir\nif (typeof parsed.iptal === 'string') {\n  parsed.iptal = parsed.iptal.toLowerCase() === 'true';\n}\n\n// fatura_no_parcasi eksikse boş string yap\nparsed.fatura_no_parcasi = parsed.fatura_no_parcasi ?? \"\";\n\nreturn [{ json: parsed }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -528,
+        3904
+      ],
+      "id": "2ca8db7b-51af-4a5b-beac-4fc258749d84",
+      "name": "Code in JavaScript5"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "e59cda20-9411-4d93-b1b2-793d64f4b515",
+              "leftValue": "={{ $json.iptal }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        -384,
+        3904
+      ],
+      "id": "c95b12a2-47d3-46c4-bdb6-cf016c6c5dcc",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "jsCode": "const aranacak = $('Code in JavaScript5').item.json.fatura_no_parcasi;\nconst eslesenler = items.filter(item => \n  item.json['Evrak No'] && item.json['Evrak No'].toString().includes(aranacak)\n);\n\nreturn eslesenler.map(item => ({\n  json: {\n    row_number: item.json.row_number, // n8n Google Sheets node'un otomatik eklediği gerçek satır no\n    evrak_no: item.json['Evrak No']\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        16,
+        3888
+      ],
+      "id": "77677498-b053-46a3-bd67-1eb720cb10cd",
+      "name": "Code in JavaScript6"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c",
+          "mode": "list",
+          "cachedResultName": "muhasebe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "gelen",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "İptal": "İptal",
+            "row_number": "={{ $json.row_number }}",
+            "Genel Toplam": "0",
+            "Toplam KDV (TL)": "0"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "Evrak Tarihi",
+              "displayName": "Evrak Tarihi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Evrak No",
+              "displayName": "Evrak No",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Şirket ismi",
+              "displayName": "Şirket ismi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "VKN",
+              "displayName": "VKN",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Ürün",
+              "displayName": "Ürün",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Adet",
+              "displayName": "Adet",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Adet Fiyatı",
+              "displayName": "Adet Fiyatı",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Döviz Cinsi",
+              "displayName": "Döviz Cinsi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "İş kolu",
+              "displayName": "İş kolu",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Kur Çarpanı",
+              "displayName": "Kur Çarpanı",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Genel Toplam",
+              "displayName": "Genel Toplam",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam (TL)",
+              "displayName": "Toplam (TL)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "KDV Oranı 0,2",
+              "displayName": "KDV Oranı 0,2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "KDV Oranı 0,1",
+              "displayName": "KDV Oranı 0,1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "KDV Oranı 0,01",
+              "displayName": "KDV Oranı 0,01",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam KDV (TL)",
+              "displayName": "Toplam KDV (TL)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Hususi Otomobil Gideri?",
+              "displayName": "Hususi Otomobil Gideri?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Stok Giriş",
+              "displayName": "Stok Giriş",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam Beyan Edilecek KDV (TL)",
+              "displayName": "Toplam Beyan Edilecek KDV (TL)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam Beyan Edilecek KV Matrah",
+              "displayName": "Toplam Beyan Edilecek KV Matrah",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "İptal",
+              "displayName": "İptal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        224,
+        3888
+      ],
+      "id": "f8098fce-a1c6-42ea-9170-13ad5e3ab864",
+      "name": "Update row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c",
+          "mode": "list",
+          "cachedResultName": "muhasebe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "gelen",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -144,
+        3888
+      ],
+      "id": "01b861d8-47ea-4e06-8b09-88a2095595fc",
+      "name": "Get row(s) in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c",
+          "mode": "list",
+          "cachedResultName": "muhasebe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1798447486,
+          "mode": "list",
+          "cachedResultName": "giden",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit#gid=1798447486"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        -144,
+        4032
+      ],
+      "id": "4d3ba1e8-e0a8-42ba-9947-6aef4fe5c18f",
+      "name": "Get row(s) in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const aranacak = $('Code in JavaScript5').item.json.fatura_no_parcasi;\nconst eslesenler = items.filter(item => \n  item.json['Evrak No'] && item.json['Evrak No'].toString().includes(aranacak)\n);\n\nreturn eslesenler.map(item => ({\n  json: {\n    row_number: item.json.row_number,\n    evrak_no: item.json['Evrak No']\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        16,
+        4032
+      ],
+      "id": "b4a707a9-e0be-422a-8a5e-8f946eb0758a",
+      "name": "Code in JavaScript7"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "documentId": {
+          "__rl": true,
+          "value": "1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c",
+          "mode": "list",
+          "cachedResultName": "muhasebe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1798447486,
+          "mode": "list",
+          "cachedResultName": "giden",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit#gid=1798447486"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "iptal": "iptal",
+            "row_number": "={{ $json.row_number }}",
+            "Genel Toplam": "0",
+            "Toplam KDV (TL)": "0"
+          },
+          "matchingColumns": [
+            "row_number"
+          ],
+          "schema": [
+            {
+              "id": "Evrak Tarihi",
+              "displayName": "Evrak Tarihi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Evrak No",
+              "displayName": "Evrak No",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Şirket ismi",
+              "displayName": "Şirket ismi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "VKN",
+              "displayName": "VKN",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Ürün",
+              "displayName": "Ürün",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Adet",
+              "displayName": "Adet",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Adet Fiyatı",
+              "displayName": "Adet Fiyatı",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Döviz Cinsi",
+              "displayName": "Döviz Cinsi",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "İş kolu",
+              "displayName": "İş kolu",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Kur Çarpanı",
+              "displayName": "Kur Çarpanı",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Genel Toplam",
+              "displayName": "Genel Toplam",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam (TL)",
+              "displayName": "Toplam (TL)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "KDV Oranı 0,2",
+              "displayName": "KDV Oranı 0,2",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "KDV Oranı 0,1",
+              "displayName": "KDV Oranı 0,1",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "KDV Oranı 0,01",
+              "displayName": "KDV Oranı 0,01",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam KDV (TL)",
+              "displayName": "Toplam KDV (TL)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Hususi Otomobil Gideri?",
+              "displayName": "Hususi Otomobil Gideri?",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Stok Giriş",
+              "displayName": "Stok Giriş",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam Beyan Edilecek KDV (TL)",
+              "displayName": "Toplam Beyan Edilecek KDV (TL)",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Toplam Beyan Edilecek KV Matrah",
+              "displayName": "Toplam Beyan Edilecek KV Matrah",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "iptal",
+              "displayName": "iptal",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "row_number",
+              "displayName": "row_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        224,
+        4032
+      ],
+      "id": "d425d0e2-890c-470d-8bc9-bb5b7a2a11dd",
+      "name": "Update row in sheet1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2b1efc32-81b4-48c8-ada3-3a2d1148c0f2",
+              "name": "message",
+              "value": "={{ $('Telegram Trigger1').item.json.message }}",
+              "type": "object"
+            },
+            {
+              "id": "b77656f6-976c-4212-9a66-71aa1cd14d75",
+              "name": "evrakCinsi",
+              "value": "={{ $('Merge7').item.json['Evrak Cinsi'] }}",
+              "type": "string"
+            },
+            {
+              "id": "07955bb8-fc86-4995-a3da-53d1605c3c27",
+              "name": "anaIsKolu",
+              "value": "={{ $('Merge7').item.json['Ana Is Kolu'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2512,
+        3760
+      ],
+      "id": "b115970c-bf65-4965-897b-eed14b249889",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "jsCode": "return items.map(item => {\n  try {\n    // 1. Gemini'nin ürettiği ham metni al (Senin veri yapına göre yol)\n    // Veri yapısı bazen değişebileceği için güvenli erişim (?.) kullanıyoruz\n    const rawText = item.json.content?.parts?.[0]?.text || item.json.text;\n\n    if (!rawText) {\n      throw new Error(\"Metin verisi bulunamadı\");\n    }\n\n    // 2. Markdown temizliği: ```json, ``` ve boşlukları sil\n    // Regex kullanımı: Her türlü markdown işaretini temizler\n    const cleanText = rawText.replace(/```json/g, \"\").replace(/```/g, \"\").trim();\n\n    // 3. String'i gerçek JSON objesine çevir\n    const parsedData = JSON.parse(cleanText);\n\n    // 4. Temiz veriyi n8n formatında geri döndür\n    return { json: parsedData };\n\n  } catch (error) {\n    // Hata durumunda akışı bozma, hata mesajı döndür\n    return {\n      json: {\n        error: \"JSON ayrıştırma hatası\",\n        message: error.message,\n        input: item.json // Hatalı gelen veriyi kontrol edebilmen için\n      }\n    };\n  }\n});"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        80,
+        3632
+      ],
+      "id": "f88892f3-b05a-4298-9185-35542450e447",
+      "name": "Code in JavaScript8",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "go1t10pbRLRWlvEa",
+          "mode": "list",
+          "cachedResultName": "Kontrol Verisi",
+          "cachedResultUrl": "/projects/MQLZkuZR79pgXy4e/datatables/go1t10pbRLRWlvEa"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ss": "Port Boş"
+          },
+          "matchingColumns": [
+            "ss"
+          ],
+          "schema": [
+            {
+              "id": "ss",
+              "displayName": "ss",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        512,
+        3952
+      ],
+      "id": "a68ac6b4-1039-4eab-bdd6-376efb05f4cf",
+      "name": "Update row(s)4"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "go1t10pbRLRWlvEa",
+          "mode": "list",
+          "cachedResultName": "Kontrol Verisi",
+          "cachedResultUrl": "/projects/MQLZkuZR79pgXy4e/datatables/go1t10pbRLRWlvEa"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ss": "Port Boş"
+          },
+          "matchingColumns": [
+            "ss"
+          ],
+          "schema": [
+            {
+              "id": "ss",
+              "displayName": "ss",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        544,
+        4128
+      ],
+      "id": "375b87b7-90f4-426f-b40d-65d86a0cc75d",
+      "name": "Update row(s)5"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json.message.text }} ID={{ $json.message.from.id }}",
+        "options": {
+          "systemMessage": "Sen veri analizi yapan bir muhasebe asistanısın. Elinde 'muhasebe' isimli bir Google E-Tablo ve bir Google Drive arşivi var.\n\nTablodaki sekmeler: 'gelen', 'giden', 'yon', 'stok', 'Hesap Hareketleri'.\nTablodaki sütunlar: Evrak Tarihi (GG-AA-YYYY formatında), Evrak No, Şirket ismi, VKN, Ürün, Adet, Adet Fiyatı, Döviz Cinsi, İş kolu, Kur Çarpanı, Genel Toplam, Toplam (TL), KDV.\n\nKullanıcı sana sorular sorduğunda, Google Sheets aracını kullanarak ilgili sekmelerde arama yap. Gelen cevapları filtrele ve kullanıcıya net, anlaşılır bir özet sun. Örneğin; 'X firmasına Y ürünü hangi fiyata satılmış?' sorusunda, 'giden' sekmesinde Şirket ismi ve Ürün sütunlarında eşleşme ara ve tarihleriyle birlikte fiyatları listele.\nSana \"getir\" komutu verilirse pdf olarak o dosya görülmek isteniyordur bağlı olan drive'da o istenilen özelliklere sahip dosyayı bul ve görüntüleme linkini ver.\n\nID'yi kontrol et. \nID=6262599060 tüm yetkilere sahiptir.\nID=1230674629 tüm yetkilere sahiptir.\nID=8492710159tüm yetkilere sahiptir.\nID=8402855302 ise sadece dosya ismi 1 ile başlayan dosyaların verilerini paylaşabilirisin, 2 ile başlayan bir dosya verisi isterse \"Böyle bir veri yok\" cevabını ver.\nBaşka bir ID iletişime geçerse kısa bir fıkra anlat.\n\nDrive Dosyalarımızın bir isimlendirme mantığı var. \nDosyaların isimleri \"A.BCDR.EFG.H.JK.XYZLMN.P\" şeklidedir.\n(A)= PAYLASIM YETKISI\n(BCDR)= ANA IS KOLU\n(EFG)= KARSIT FIRMA\n(H)= EVRAK YONU\n1-Alış\n2-Satış\n(JK)= EVRAK CINSI\n01-FATURA\n02-PROFORMA\n03-SIPARIS FORMU\n09-CEKI LISTESI\n10-ITHALAT KLASORU\n11-BEYANNAME\n12-IHRACAT KLASORU\n13-URUN DOSYASI\n16-INVOICE\n17-POLICE\n18-BELIRSIZ\n(XYZLMN)=TARIH(yymmdd şeklinde)\n\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3.1,
+      "position": [
+        -3056,
+        4368
+      ],
+      "id": "e30771dd-b357-486d-a9ba-fe9f9f926d4f",
+      "name": "AI Agent"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        -3184,
+        4576
+      ],
+      "id": "2b667554-2831-4059-b11d-eead514d9405",
+      "name": "Google Gemini Chat Model",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "a5Oj26XrO72FzlrI",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Bu araç muhasebe tablosundaki GİDEN faturaları (satışları) aramak ve okumak için kullanılır.",
+        "documentId": {
+          "__rl": true,
+          "value": "1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c",
+          "mode": "list",
+          "cachedResultName": "muhasebe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1798447486,
+          "mode": "list",
+          "cachedResultName": "giden",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit#gid=1798447486"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        -2896,
+        4576
+      ],
+      "id": "7759de17-8088-4ea3-a95a-c6dd422ae6b0",
+      "name": "Get row(s) in sheet in Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Bu araç muhasebe tablosundaki Gelen faturaları (alışları) aramak ve okumak için kullanılır.",
+        "documentId": {
+          "__rl": true,
+          "value": "1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c",
+          "mode": "list",
+          "cachedResultName": "muhasebe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "gelen",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit#gid=0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        -2736,
+        4576
+      ],
+      "id": "a95e007d-56ff-40a6-a554-5c6b879f528e",
+      "name": "Get row(s) in sheet in Google Sheets1",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Bu araç muhasebe tablosundaki stokları aramak ve okumak için kullanılır.",
+        "documentId": {
+          "__rl": true,
+          "value": "1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c",
+          "mode": "list",
+          "cachedResultName": "muhasebe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 530019024,
+          "mode": "list",
+          "cachedResultName": "stok",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit#gid=530019024"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        -2624,
+        4512
+      ],
+      "id": "9e4b5112-36a9-49f9-83dd-06b43929826e",
+      "name": "Get row(s) in sheet in Google Sheets2",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Bu araç muhasebe tablosundaki yön aramak ve okumak için kullanılır.",
+        "documentId": {
+          "__rl": true,
+          "value": "1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c",
+          "mode": "list",
+          "cachedResultName": "muhasebe",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1077085734,
+          "mode": "list",
+          "cachedResultName": "yon",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1lI6lPSqiJUEJwNnGdqbT-UvHgsfB6vIMHYuNs0fUh7c/edit#gid=1077085734"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheetsTool",
+      "typeVersion": 4.7,
+      "position": [
+        -2528,
+        4416
+      ],
+      "id": "7c28c129-0a07-4af9-8a30-a1c4254ebc40",
+      "name": "Get row(s) in sheet in Google Sheets3",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "m5oqSY31UvCJwGxx",
+          "name": "drivedaki sheets"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $json.update_id }}",
+        "contextWindowLength": 10
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        -3024,
+        4576
+      ],
+      "id": "8d15871f-5697-419f-90bb-7d03b3dfdcfa",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Telegram Trigger1').item.json.message.from.id }}",
+        "text": "={{ $json.output }}",
+        "additionalFields": {
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -2656,
+        4192
+      ],
+      "id": "dd5ba320-7aec-4bc4-9e2b-f6a529a13316",
+      "name": "Send a text message",
+      "webhookId": "c8124ae2-d26b-4646-9928-649352b527ec",
+      "credentials": {
+        "telegramApi": {
+          "id": "cU6K00Z4xsSoBuwn",
+          "name": "EBTaimuhasebeBot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "descriptionType": "manual",
+        "toolDescription": "Search files and folders in Google Drive",
+        "resource": "fileFolder",
+        "queryString": "=",
+        "returnAll": true,
+        "filter": {},
+        "options": {
+          "fields": [
+            "*"
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDriveTool",
+      "typeVersion": 3,
+      "position": [
+        -2416,
+        4320
+      ],
+      "id": "b55461f7-f5f0-440e-9447-3c4abc945b01",
+      "name": "Search files and folders in Google Drive",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "RQOD57FdDI8G9wBw",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "dataTableId": {
+          "__rl": true,
+          "value": "go1t10pbRLRWlvEa",
+          "mode": "list",
+          "cachedResultName": "Kontrol Verisi",
+          "cachedResultUrl": "/projects/MQLZkuZR79pgXy4e/datatables/go1t10pbRLRWlvEa"
+        },
+        "filters": {
+          "conditions": [
+            {
+              "keyValue": "1"
+            }
+          ]
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ss": "Port Boş"
+          },
+          "matchingColumns": [
+            "ss"
+          ],
+          "schema": [
+            {
+              "id": "ss",
+              "displayName": "ss",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        -2400,
+        4144
+      ],
+      "id": "54c435dd-c0c7-4cff-98f7-618b15a3c0b9",
+      "name": "Update row(s)6"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Switch3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch2": {
+      "main": [
+        [
+          {
+            "node": "Switch6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch3": {
+      "main": [
+        [
+          {
+            "node": "Get a file2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a file15",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a file16",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a file18",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a file19",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a file17",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch4": {
+      "main": [
+        [
+          {
+            "node": "Get a file3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a file20",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch6": {
+      "main": [
+        [
+          {
+            "node": "Get a file4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a file21",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a file22",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a file23",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch5": {
+      "main": [
+        [
+          {
+            "node": "Get a file5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a file10",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a file9",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a file8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a file7",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a file6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders": {
+      "main": [
+        [
+          {
+            "node": "Switch7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch7": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Create folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Upload file14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create folder": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge2": {
+      "main": [
+        [
+          {
+            "node": "Upload file15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders1": {
+      "main": [
+        [
+          {
+            "node": "Switch8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch8": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 1
+          }
+        ],
+        [
+          {
+            "node": "Create folder1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create folder1": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge3": {
+      "main": [
+        [
+          {
+            "node": "Upload file16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge4": {
+      "main": [
+        [
+          {
+            "node": "Upload file17",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file10": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hata Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hata Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file1": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hata Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file2": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hata Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file4": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hata Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file13": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hata Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file5": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hata Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file6": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hata Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file7": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hata Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file9": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hata Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file16": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hata Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file17": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hata Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file14": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hata Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file15": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hata Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file11": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hata Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file12": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Hata Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        []
+      ]
+    },
+    "Telegram Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Get row(s)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Extract from File2": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch10": {
+      "main": [
+        [
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 1
+          },
+          {
+            "node": "Get a file",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get a file1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get a file11",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get a file12",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get a file13",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get a file14",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Message a model4",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "AI Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model3": {
+      "main": [
+        []
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update row(s)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript3": {
+      "main": [
+        [
+          {
+            "node": "Merge7",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge5": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file18": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Call 'efatura'": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Search files and folders2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Merge5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file8": {
+      "main": [
+        [
+          {
+            "node": "Onay Mesajı",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Onay Mesajı": {
+      "main": [
+        [
+          {
+            "node": "Update row(s)2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Hata Mesajı": {
+      "main": [
+        [
+          {
+            "node": "Update row(s)3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s)": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update row(s)1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row(s)": {
+      "main": [
+        [
+          {
+            "node": "Send a text message1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row(s)1": {
+      "main": [
+        [
+          {
+            "node": "Merge6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge6": {
+      "main": [
+        [
+          {
+            "node": "Switch10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Get row(s)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Upload file10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "Message a model2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Extract from File2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file1": {
+      "main": [
+        [
+          {
+            "node": "Extract from File2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file2": {
+      "main": [
+        [
+          {
+            "node": "Upload file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file3": {
+      "main": [
+        [
+          {
+            "node": "Upload file5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file4": {
+      "main": [
+        [
+          {
+            "node": "Upload file7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file5": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file6": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file7": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file8": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file9": {
+      "main": [
+        [
+          {
+            "node": "Upload file12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file10": {
+      "main": [
+        [
+          {
+            "node": "Upload file11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file11": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file12": {
+      "main": [
+        [
+          {
+            "node": "Merge4",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Get a file13": {
+      "main": [
+        [
+          {
+            "node": "Merge2",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Get a file14": {
+      "main": [
+        [
+          {
+            "node": "Merge3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file15": {
+      "main": [
+        [
+          {
+            "node": "Upload file1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file16": {
+      "main": [
+        [
+          {
+            "node": "Upload file2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file17": {
+      "main": [
+        [
+          {
+            "node": "Upload file18",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file18": {
+      "main": [
+        [
+          {
+            "node": "Upload file4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file19": {
+      "main": [
+        [
+          {
+            "node": "Upload file13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file20": {
+      "main": [
+        [
+          {
+            "node": "Upload file6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file21": {
+      "main": [
+        [
+          {
+            "node": "Upload file8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file22": {
+      "main": [
+        [
+          {
+            "node": "Upload file9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a file23": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Copy file1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Copy file1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update a document2": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Update a document2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "Update a document1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript4": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge7": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model4": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript5": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Get row(s) in sheet",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get row(s) in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript6": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript7": {
+      "main": [
+        [
+          {
+            "node": "Update row in sheet1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Call 'efatura'",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript8": {
+      "main": [
+        [
+          {
+            "node": "Merge7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Update row(s)4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update row in sheet1": {
+      "main": [
+        [
+          {
+            "node": "Update row(s)5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Agent": {
+      "main": [
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets1": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets2": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get row(s) in sheet in Google Sheets3": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders in Google Drive": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Agent",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        [
+          {
+            "node": "Update row(s)6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false,
+    "timeSavedMode": "fixed"
+  },
+  "versionId": "1e8da4e4-5953-487c-982a-f8e1440c0d79",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "490ae940fc888e81dc6fc40589fccfe88e651233e3f199cede2f621b6beb279c"
+  },
+  "nodeGroups": [],
+  "id": "PP7As9bX35TX4VTa",
+  "tags": []
+}
