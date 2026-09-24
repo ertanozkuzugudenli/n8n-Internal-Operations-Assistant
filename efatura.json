@@ -866,7 +866,7 @@
           "cachedResultName": "CHATGPT-4O-LATEST"
         },
         "text": "=görselden belirtilen bilgileri çıkar ve yalnızca JSON formatında cevap ver. \nHer zaman aynı değişken isimlerini kullan. Eksik bilgi varsa boş string (\"\") olarak yaz. \nJSON dışında hiçbir açıklama veya metin yazma.\n\nSadece geçerli JSON ile cevap ver. \nKesin kurallar:\n- Cevapta ``` veya başka açıklama olmayacak, yalnızca JSON olacak. \n- Sayılarda nokta (.) değil virgül (,) kullanılacak. Örn: 340.00\n- Her alan çift tırnak (\"\") içinde olacak. \n- Eksik bilgi varsa boş string (\"\") yazılacak. \n- \"urunler\" mutlaka bir dizi olmalı.\n- JSON mutlaka doğru kapanmış olmalı.\n\nÖNEMLİ KURAL: \n- istediğim JSON formatında cevap ver\n- Ürünler listesi mutlaka \"urunler\" dizisinde olmalıdır. \n- ürün isminde kod ya da sayı varsa onları da almayı unutma\n- Dizinin eleman sayısı görseldeki ürün adedi kadar olmalıdır.\n- Her ürün için mutlaka şu alanlar bulunmalıdır: \"adi\", \"miktar\", \"birim_fiyat\", \"kdv_miktari\", \"odenecek_tutar\",\"döviz_birimi\"\n\n\nİstediğim JSON şablonu:\n\n{\n  \"belge_tarihi\": \"\",\n  \"fatura_no\": \"\",\n  \"faturayi_kesen\": {\n    \"adi\": \"\",\n    \"TCKN_VKN\": \"\"\n  },\n  \"fatura_kesilen\": {\n   \"adi\": \"\",\n    \"TCKN_VKN\": \"\"\n  },\n  \"urunler\": [\n    {\n      \"adi\": \"\",\n      \"miktar\": \"\",\n      \"birim_fiyat\": \"\",\n      \"kdv_miktari\": \"\",\n      \"odenecek_tutar\": \"\",\n      \"kur_carpani\": \"\",\n      \"doviz_birimi\":\"\"\n    }\n  ]\n}\n",
-        "imageUrls": "=https://api.telegram.org/file/bot7603268344:AAGe0IFZxaFiZGb_qYVoOQ05JZaBYOXd3ec/{{ $json.result.file_path }}\n",
+        "imageUrls": "",
         "options": {}
       },
       "type": "@n8n/n8n-nodes-langchain.openAi",
